@@ -1,0 +1,110 @@
+/** @format */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+body {
+  margin: 0;
+  font-family: 'Roboto Serif', serif  !important; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Wcomponents */
+.wcomp::-webkit-scrollbar {
+  width: 0px;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+::-webkit-scrollbar-track {
+  background: #696f78;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b4b8bf;
+}
+
+.main-card--container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 500px));
+  grid-gap: 50px;
+  justify-content: space-around;
+}
+.card-container {
+  margin: 25px 0 auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.img-thumbnail {
+  width: 80px;
+}
+.img-large {
+  max-width: 80%;
+}
+
+.formInput {
+  padding: 5px;
+}
+
+.BannerImg{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 20px;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.BannerImg div{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px;
+  
+}
+.BannerImg img{
+  width: 400px;
+  height: 200px;
+}
+
+
+li{
+  list-style: disc;
+}
+.carouselImages{
+  width: 200px !important; 
+}
+.Car{
+  width: 200px !important;
+}
+
+.three-Sec{
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: auto auto auto;
+  margin-top: 5%;
+  text-align: center;
+  color: black;
+}
+.three-Sec img{
+  width: 400px;
+}
+.three-Sec p{
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+.three-Sec button{
+  border: 1px solid red;
+  background-color: #ffff;
+  color: red;
+  width: 100%;
+  padding: 3px;
+  margin-top: 10px;
+  font-size: 20px;
+}
