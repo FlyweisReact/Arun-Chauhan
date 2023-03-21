@@ -22,7 +22,7 @@ import Service from "./AdminPanel/pages/Service";
 import Notification from "./AdminPanel/pages/Notification";
 import SubCategory from "./AdminPanel/pages/SubCategory";
 import Banner from "./AdminPanel/pages/Banner";
-import Login from "./AdminPanel/Login";
+import Login from './AdminPanel/Login'
 
 function App() {
   return (

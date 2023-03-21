@@ -3,26 +3,26 @@
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Privacy from "./AdminPanel/pages/Privacy";
-import Offers from "./AdminPanel/pages/Category";
-import FeedBack from "./AdminPanel/pages/FeedBack";
-import TermsCon from "./AdminPanel/pages/TermsCon";
-import HelpSupport from "./AdminPanel/pages/HelpSupport";
-import OrderHistory from "./AdminPanel/pages/OrderHistory";
-import Installar from "./AdminPanel/pages/Installar";
-import Sellers from "./AdminPanel/pages/Sellers";
-import Dashboard from "./AdminPanel/pages/Dashboard";
-import Users from "./AdminPanel/pages/Users";
-import Reviews from "./AdminPanel/pages/Reviews";
-import Coupon from "./AdminPanel/pages/Coupon";
-import Product from "./AdminPanel/pages/Product";
-import About from "./AdminPanel/pages/About";
-import Blogs from "./AdminPanel/pages/Blogs";
-import Service from "./AdminPanel/pages/Service";
-import Notification from "./AdminPanel/pages/Notification";
-import SubCategory from "./AdminPanel/pages/SubCategory";
-import Banner from "./AdminPanel/pages/Banner";
-import Login from "./AdminPanel/Login";
+import Privacy from "./components/vendorPanel/components/pages/Privacy";
+import Offers from "./components/vendorPanel/components/pages/Category";
+import FeedBack from "./components/vendorPanel/components/pages/FeedBack";
+import TermsCon from "./components/vendorPanel/components/pages/TermsCon";
+import HelpSupport from "./components/vendorPanel/components/pages/HelpSupport";
+import OrderHistory from "./components/vendorPanel/components/pages/OrderHistory";
+import Installar from "./components/vendorPanel/components/pages/Installar";
+import Sellers from "./components/vendorPanel/components/pages/Sellers";
+import Dashboard from "./components/vendorPanel/components/pages/Dashboard";
+import Users from "./components/vendorPanel/components/pages/Users";
+import Reviews from "./components/vendorPanel/components/pages/Reviews";
+import Coupon from "./components/vendorPanel/components/pages/Coupon";
+import Product from "./components/vendorPanel/components/pages/Product";
+import About from "./components/vendorPanel/components/pages/About";
+import Blogs from "./components/vendorPanel/components/pages/Blogs";
+import Service from "./components/vendorPanel/components/pages/Service";
+import Notification from "./components/vendorPanel/components/pages/Notification";
+import SubCategory from "./components/vendorPanel/components/pages/SubCategory";
+import Banner from "./components/vendorPanel/components/pages/Banner";
+import Login from './AdminPanel/Login'
 
 function App() {
   return (
