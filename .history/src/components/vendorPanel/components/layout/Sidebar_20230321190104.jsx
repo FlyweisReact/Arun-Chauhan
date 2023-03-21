@@ -114,7 +114,7 @@ const Sidebar = ({ hamb, setHamb }) => {
 
   const logOut = () => {
     localStorage.removeItem("token");
-    navigate("/");
+    navigate("/vendorLogin");
   };
 
   return (

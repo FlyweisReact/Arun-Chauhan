@@ -3,7 +3,7 @@
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Privacy from "./components/vendorPanel/components/pages/Privacy";
+import Privacy from "./components/vendorPanel/components/pages/Privacy";;
 import Offers from "./components/vendorPanel/components/pages/Category";
 import FeedBack from "./components/vendorPanel/components/pages/FeedBack";
 import TermsCon from "./components/vendorPanel/components/pages/TermsCon";

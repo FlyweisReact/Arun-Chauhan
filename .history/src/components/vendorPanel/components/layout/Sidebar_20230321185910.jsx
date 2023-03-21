@@ -42,47 +42,47 @@ const Sidebar = ({ hamb, setHamb }) => {
     },
     {
       icon: <FaProductHunt className="text-xl mr-3 rounded-full " />,
-      link: "/about",
+      link: "/transaction",
       name: "About Us",
     },
     {
       icon: <FaUserCircle className="text-xl mr-3" />,
-      link: "/review",
+      link: "/users",
       name: "Reviews",
     },
     {
       icon: <BsFillCartFill className="text-xl mr-3" />,
-      link: "/blogs",
+      link: "/order",
       name: "Blogs",
     },
     {
       icon: <BsFillChatDotsFill className="text-xl mr-3" />,
-      link: "/services",
+      link: "/complaint",
       name: "Services",
     },
     {
       icon: <BsFillChatDotsFill className="text-xl mr-3" />,
-      link: "/category",
+      link: "/offers",
       name: "Categories",
     },
     {
       icon: <AiFillMessage className="text-xl mr-3 rounded-full " />,
-      link: "/notification",
+      link: "/msg",
       name: "Notification",
     },    
     {
       icon: <AiFillMessage className="text-xl mr-3 rounded-full " />,
-      link: "/sub-category",
+      link: "/currentPass",
       name: "Sub-Categories",
     },    
     {
       icon: <AiFillMessage className="text-xl mr-3 rounded-full " />,
-      link: "/banners",
+      link: "/trans",
       name: "Banners",
     },    
     {
       icon: <AiFillMessage className="text-xl mr-3 rounded-full " />,
-      link: "/order-history",
+      link: "/orderH",
       name: "Order History",
     },    
     {
@@ -97,7 +97,7 @@ const Sidebar = ({ hamb, setHamb }) => {
     },    
     {
       icon: <AiFillMessage className="text-xl mr-3 rounded-full " />,
-      link: "/terms-condition",
+      link: "/termsCon",
       name: "Term&Condition",
     },    
     {
@@ -114,7 +114,7 @@ const Sidebar = ({ hamb, setHamb }) => {
 
   const logOut = () => {
     localStorage.removeItem("token");
-    navigate("/");
+    navigate("/vendorLogin");
   };
 
   return (

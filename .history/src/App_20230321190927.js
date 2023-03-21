@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Privacy from "./components/vendorPanel/components/pages/Privacy";
+import Transactions from "./components/vendorPanel/components/pages/Transactions";
+import CurrentPass from "./components/vendorPanel/components/pages/SubCategory";
 import Offers from "./components/vendorPanel/components/pages/Category";
 import FeedBack from "./components/vendorPanel/components/pages/FeedBack";
 import TermsCon from "./components/vendorPanel/components/pages/TermsCon";
@@ -21,8 +23,6 @@ import About from "./components/vendorPanel/components/pages/About";
 import Blogs from "./components/vendorPanel/components/pages/Blogs";
 import Service from "./components/vendorPanel/components/pages/Service";
 import Notification from "./components/vendorPanel/components/pages/Notification";
-import SubCategory from "./components/vendorPanel/components/pages/SubCategory";
-import Banner from "./components/vendorPanel/components/pages/Banner";
 
 function App() {
   return (
@@ -43,8 +43,8 @@ function App() {
         <Route path="/services" element={<Service />} />
         <Route path="/category" element={<Offers />} />
         <Route path="/notification" element={<Notification />} />
-        <Route path="/sub-category" element={<SubCategory />} />
-        <Route path="/banners" element={<Banner />} />
+        <Route path="/sub-category" element={<CurrentPass />} />
+        <Route path="/banners" element={<Transactions />} />
         <Route path="/order-history" element={<OrderHistory />} />
         <Route path="/installar" element={<Installar />} />
         <Route path="/feedBacks" element={<FeedBack />} />
