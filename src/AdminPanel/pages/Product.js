@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import HOC from "../layout/HOC";
-import { Form, Table } from "react-bootstrap";
+import { Form, Table ,Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -15,7 +15,9 @@ const Product = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const [data, setData] = useState([]);
   const [dataCount, setDataCount] = useState("");
-  const [ categoryData , setCatedogryData ] = useState([])
+  const [categoryData, setCatedogryData] = useState([]);
+  const [subCategoryData, setSubCategoryData] = useState([]);
+  const [ view , setView ] = useState(false)
 
   const fetchData = async () => {
     try {
@@ -30,19 +32,32 @@ const Product = () => {
   };
 
   const fetchCategory = async () => {
-    try{
-      const { data } = await axios.get("http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category")
-      setCatedogryData(data.data)
-    }catch(e){
-      console.log(e)
+    try {
+      const { data } = await axios.get(
+        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+      );
+      setCatedogryData(data.data);
+    } catch (e) {
+      console.log(e);
     }
-  }
+  };
 
+  const fetchSubCategory = async () => {
+    try {
+      const { data } = await axios.get(
+        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
+      );
+      setSubCategoryData(data.result);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
     fetchData();
-    if(modalShow === true){
-      fetchCategory()
+    if (modalShow === true) {
+      fetchCategory();
+      fetchSubCategory();
     }
   }, [modalShow]);
 
@@ -53,6 +68,7 @@ const Product = () => {
     const [features, setFeatures] = useState("");
     const [amount, setAmoutn] = useState("");
     const [category, setCategory] = useState("");
+    const [subCat, setSubCat] = useState("");
 
     const postHandler = async (e) => {
       e.preventDefault();
@@ -65,7 +81,8 @@ const Product = () => {
       fd.append("features", features);
       fd.append("price", amount);
       fd.append("category_id", category);
-     
+      fd.append("subCategory", subCat);
+
       try {
         const { data } = await axios.post(
           "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product",
@@ -132,13 +149,39 @@ const Product = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
+              <Form.Label>Commission</Form.Label>
+              <Form.Control type="number" min={0} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Select aria-label="Default select example">
+                <option>Commission in</option>
+                <option>Falt %</option>
+                <option>Rupees ₹</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
               <Form.Select
                 aria-label="Default select example"
                 onChange={(e) => setCategory(e.target.value)}
               >
                 <option>Select Category</option>
-                {categoryData?.map((i , index) => (
-                  <option value={i._id} key={index}>{i.category}</option>
+                {categoryData?.map((i, index) => (
+                  <option value={i._id} key={index}>
+                    {i.category}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => setSubCat(e.target.value)}
+              >
+                <option>Select Sub-Category</option>
+                {subCategoryData?.map((i, index) => (
+                  <option value={i._id} key={index}>
+                    {i.title}
+                  </option>
                 ))}
               </Form.Select>
             </Form.Group>
@@ -149,6 +192,9 @@ const Product = () => {
       </Modal>
     );
   }
+
+
+
 
   const deleteHandler = async (id) => {
     try {
@@ -176,11 +222,62 @@ const Product = () => {
     }
   };
 
+
+  // View Modal
+  function DetailModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+          View Product
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <Container>
+            <div className="bigCont">
+              <p className="contP">Title : Lorem ipsum</p>
+              <p className="contP">Description : Lorem ipsum</p>
+            </div>
+            <div className="bigCont">
+              <p className="contP">Amount : Lorem ipsum  </p>
+              <p className="contP">Features : Lorem ipsum</p>
+            </div>
+            <div className="bigCont">
+              <p className="contP">Category : Lorem ipsum</p>
+              <p className="contP">Sub-category : Lorem ipsum</p>
+            </div>
+            <div className="bigCont">
+              <p className="contP">Seller Name : Lorem ipsum</p>
+              <p className="contP">Seller Email : Lorem ipsum</p>
+            </div>
+            <div className="bigCont">
+              <p className="contP">Seller Mobile Number : Lorem ipsum</p>
+              <p className="contP">Commission : Lorem ipsum</p>
+            </div>
+            <div className="bigCont">
+              <p className="contP">Approved/DisApproves : Lorem ipsum</p>
+            </div>
+          </Container>
+        </Modal.Body>
+        <Modal.Footer></Modal.Footer>
+      </Modal>
+    );
+  }
+
   return (
     <>
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+      />
+      <DetailModal
+        show={view}
+        onHide={() => setView(false)}
       />
 
       <section>
@@ -204,6 +301,9 @@ const Product = () => {
                 <th>Amount</th>
                 <th>Features</th>
                 <th>Category</th>
+                <th>Sub-Category</th>
+                <th>Seller</th>
+                <th>Commission</th>
                 <th>Approve/Disapprove</th>
                 <th>Actions</th>
               </tr>
@@ -247,7 +347,9 @@ const Product = () => {
                     </ul>
                   </td>
                   <td>{i.category_id?.category}</td>
-
+                  <td>{i.subCategory?.title}</td>
+                  <td>Nishant </td>
+                  <td>Flat 50% </td>
                   <td>
                     <Button
                       variant="outline-success"
@@ -259,11 +361,18 @@ const Product = () => {
                     </Button>
                   </td>
                   <td>
-                    <i
-                      class="fa-solid fa-trash"
-                      style={{ color: "red", cursor: "pointer" }}
-                      onClick={() => deleteHandler(i._id)}
-                    ></i>
+                    <div className="d-flex gap-2">
+                      <i
+                        className="fa-solid fa-trash"
+                        style={{ color: "red", cursor: "pointer" }}
+                        onClick={() => deleteHandler(i._id)}
+                      ></i>
+                      <i
+                        className="fa-solid fa-eye"
+                        style={{ color: "blue", cursor: "pointer" }}
+                        onClick={() => setView(true)}
+                      ></i>
+                    </div>
                   </td>
                 </tr>
               ))}

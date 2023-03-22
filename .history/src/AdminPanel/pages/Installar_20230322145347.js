@@ -117,7 +117,7 @@ const Installar = () => {
               <td>
                 <button
                   className="viewBtn"
-                  onClick={() => navigate(`/installer-transaction/${i._id}`)}
+                  onClick={() => navigate(`//installer-transaction/${i._id}`)}
                 >
                   View
                 </button>

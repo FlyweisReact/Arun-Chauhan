@@ -75,6 +75,13 @@ const Dashboard = () => {
       number: bookCount,
       icon: <FaUserFriends className="text-2xl text-[rgb(240,72,88)]" />,
       link : '/category'
+    },
+    {
+      progress: "bg-blue-400",
+      title: "Total Active User",
+      number: 20,
+      icon: <FaUserFriends className="text-2xl text-[rgb(240,72,88)]" />,
+      link : '/users'
     }
   ];
   return (

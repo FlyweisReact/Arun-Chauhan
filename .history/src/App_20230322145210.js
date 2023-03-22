@@ -24,7 +24,6 @@ import SubCategory from "./AdminPanel/pages/SubCategory";
 import Banner from "./AdminPanel/pages/Banner";
 import Login from "./AdminPanel/Login";
 import Transaction from "./AdminPanel/pages/Transaction";
-import InstallerTransactions from "./AdminPanel/pages/InstallerTransactions";
 
 function App() {
   return (
@@ -54,7 +53,7 @@ function App() {
         <Route path="/helpSupport" element={<HelpSupport />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/transactions/:id" element={<Transaction />} />
-        <Route path="/installer-transaction/:id" element={<InstallerTransactions />} />
+        <Route path="/installer"
       </Routes>
     </>
   );

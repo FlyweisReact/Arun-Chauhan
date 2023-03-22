@@ -2,15 +2,14 @@
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Table, Modal, Container } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Table  , Modal , Container } from "react-bootstrap";
 import { toast } from "react-toastify";
 import HOC from "../layout/HOC";
 
 const Installar = () => {
   const [data, setData] = useState([]);
   const [modalShow, setModalShow] = useState(false);
-  const navigate = useNavigate();
+  
 
   const fetchData = async () => {
     try {
@@ -40,43 +39,44 @@ const Installar = () => {
     }
   };
 
-  // View Modal
-  function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            View Installer
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Container>
-            <div className="bigCont">
-              <p className="contP">Name : Lorem ipsum </p>
-              <p className="contP">Mobile Number : Lorem ipsum</p>
-            </div>
-            <div className="bigCont">
-              <p className="contP">Email : Lorem ipsum </p>
-              <p className="contP">Serivces : Lorem ipsum</p>
-            </div>
-            <div className="bigCont">
-              <p className="contP">Address : Lorem ipsum</p>
-            </div>
-          </Container>
-        </Modal.Body>
-        <Modal.Footer></Modal.Footer>
-      </Modal>
-    );
-  }
+
+    // View Modal
+    function MyVerticallyCenteredModal(props) {
+      return (
+        <Modal
+          {...props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              View Installer
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Container>
+              <div className="bigCont">
+                <p className="contP">Name : Lorem ipsum  </p>
+                <p className="contP">Mobile Number : Lorem ipsum</p>
+              </div>
+              <div className="bigCont">
+                <p className="contP">Email : Lorem ipsum  </p>
+                <p className="contP">Serivces : Lorem ipsum</p>
+              </div>
+              <div className="bigCont">
+                <p className="contP">Address : Lorem ipsum</p>
+              </div>
+            </Container>
+          </Modal.Body>
+          <Modal.Footer></Modal.Footer>
+        </Modal>
+      );
+    }
 
   return (
     <>
-      <MyVerticallyCenteredModal
+          <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
@@ -115,33 +115,29 @@ const Installar = () => {
               </td>
               <td> {i.location?.address} </td>
               <td>
-                <button
-                  className="viewBtn"
-                  onClick={() => navigate(`/installer-transaction/${i._id}`)}
-                >
-                  View
-                </button>
+                <button className="viewBtn" >View</button>
               </td>
               <td>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "10px",
-                    alignItems: "center",
-                    paddingTop: "10px",
-                  }}
-                >
-                  <i
-                    className="fa-solid fa-trash"
-                    style={{ color: "red", cursor: "pointer" }}
-                    onClick={() => deleteHandler(i._id)}
-                  ></i>
-                  <i
-                    class="fa-solid fa-eye"
-                    style={{ color: "#4581e8", cursor: "pointer" }}
-                    onClick={() => setModalShow(true)}
-                  ></i>
-                </div>
+              <div
+                      style={{
+                        display: "flex",
+                        gap: "10px",
+                        alignItems: "center",
+                        paddingTop: "10px",
+                      }}
+                    >
+                      <i
+                        className="fa-solid fa-trash"
+                        style={{ color: "red", cursor: "pointer" }}
+                        onClick={() => deleteHandler(i._id)}
+                      ></i>
+                      <i
+                        class="fa-solid fa-eye"
+                        style={{ color: "#4581e8", cursor: "pointer" }}
+                        onClick={() => setModalShow(true)}
+                      ></i>
+                    </div>
+               
               </td>
             </tr>
           ))}

@@ -1,30 +1,267 @@
 /** @format */
 
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import { toast } from "react-toastify";
 import HOC from "../layout/HOC";
 
 const FeedBack = () => {
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const { data } = await axios.get(
+        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/feedback/`
+      );
+      setData(data.result);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const deleteHandler = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/feedback/${id}`
+      );
+      console.log(data);
+      toast.success("Deleted");
+      fetchData()
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
-      <p style={{ color: "black", fontSize: "18px" }}> All Feedbacks </p>
+      <p style={{ color: "black", fontSize: "18px" }}>
+        {" "}
+        All Feedbacks (Total : {data?.length}){" "}
+      </p>
 
       <Table striped bordered hover style={{ marginTop: "2%" }}>
         <thead>
+          <th>Sno.</th>
           <th>Rating</th>
           <th>Description</th>
         </thead>
         <tbody>
-          <tr>
-            <td>5</td>
-            <td>
-              <p style={{ maxWidth: "400px" }}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make
-              </p>
-            </td>
-          </tr>
+          {data?.map((i, index) => (
+            <tr key={index}>
+              <td> {index + 1} </td>
+              <td>
+                {i.reting === 0 ? (
+                  <>
+                    <i class="fa-regular fa-star"  style={{ color: "#ffd43b" }}></i>
+                  </>
+                ) : (
+                  ""
+                )}
+                {i.reting === 0.5 ? (
+                  <>
+                    <i
+                      class="fa-solid fa-star-half"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                  </>
+                ) : (
+                  ""
+                )}
+                {i.reting === 1 ? (
+                  <>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                  </>
+                ) : (
+                  ""
+                )}
+
+                {i.reting === 1.5 ? (
+                  <>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star-half"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                  </>
+                ) : (
+                  ""
+                )}
+
+                {i.reting === 2 ? (
+                  <>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>{" "}
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                  </>
+                ) : (
+                  ""
+                )}
+
+                {i.reting === 2.5 ? (
+                  <>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star-half"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                  </>
+                ) : (
+                  ""
+                )}
+
+                {i.reting === 3 ? (
+                  <>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>{" "}
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                  </>
+                ) : (
+                  ""
+                )}
+
+                {i.reting === 3.5 ? (
+                  <>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star-half"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                  </>
+                ) : (
+                  ""
+                )}
+
+                {i.reting === 4 ? (
+                  <>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>{" "}
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                  </>
+                ) : (
+                  ""
+                )}
+
+                {i.reting === 4.5 ? (
+                  <>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star-half"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                  </>
+                ) : (
+                  ""
+                )}
+                {i.reting === 5 ? (
+                  <>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>{" "}
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                    <i
+                      class="fa-solid fa-star"
+                      style={{ color: "#ffd43b" }}
+                    ></i>
+                  </>
+                ) : (
+                  ""
+                )}
+              </td>
+              <td>
+                <p style={{ maxWidth: "400px" }}>{i.comment}</p>
+              </td>
+              <td>
+                <i
+                  class="fa-solid fa-trash"
+                  style={{ color: " #ff0000", cursor: "pointer" }}
+                  onClick={() => deleteHandler(i._id)}
+                ></i>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </>
