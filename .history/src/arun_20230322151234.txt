@@ -1,9 +1,3 @@
-
-
-Review => Accept / Deny  
- 
-Coupon => All/ Product / Seller / Category 
-
 Service => Discoutn => Rupees / Flat %
 
 Notification => Images 

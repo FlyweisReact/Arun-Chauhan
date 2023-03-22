@@ -1,0 +1,8 @@
+
+Category => Commission (Ruppes / Flat%)
+
+Banner => Category
+
+User => Active /InActive
+
+Reporting
