@@ -7,6 +7,7 @@ import { BiLogInCircle } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Oval } from "react-loader-spinner";
+import axios from "axios";
 
 
 
@@ -15,15 +16,21 @@ const Vendorlogin = () => {
   const [inputpass, setInputpass] = useState(false);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [email , setEmail  ] = useState("")
+  const [ password , setPassword ] = useState("")
 
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
+      const { data } = await axios.post("http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/seller/signin" , { email , password })
+      localStorage.setItem("vendorToken" , data.token)
+      localStorage.setItem("vendorId" , data.userId)
       toast.success("Welcome Seller ");
       setLoading(false);
       navigate("/vendor/dashboard");
     } catch (err) {
+      setLoading(false);
       console.log(err)
       toast.success(err.response.data.message)
     }
@@ -45,6 +52,7 @@ const Vendorlogin = () => {
                 placeholder="admin@gmail.com"
                 required
                 className="outline-none px-0.5  bg-transparent tracking-wider w-full"
+                onChange={(e) => setEmail(e.target.value)}
        
               />
               <AiOutlineMail className="text-xl " />
@@ -57,6 +65,7 @@ const Vendorlogin = () => {
                 name="password"
                 required
                 className="outline-none px-0.5  bg-transparent tracking-wider w-full"
+                onChange={(e) => setPassword(e.target.value)}
               />
 
               <span

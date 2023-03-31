@@ -1,12 +1,55 @@
 /** @format */
 import { Button, Modal, Form, Table } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import HOC from "../layout/HOC";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const VendorCategory = () => {
   const [modalShow, setModalShow] = useState(false);
+  const [ data , setData ] = useState([])
+  const sellorId = localStorage.getItem("vendorId")
+
+  const fetchData = useCallback( async () => {
+    try{
+      const { data } = await axios.get(`http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category/seller/${sellorId}`)
+      setData(data.data)
+    }catch(e){
+      console.log(e)
+    }
+  },[sellorId])
+
+  useEffect(() => {
+    fetchData()
+  },[fetchData])
 
   function MyVerticallyCenteredModal(props) {
+
+    const [title, setTitle] = useState("");
+    const [image, setImage] = useState("");
+
+    const postHandler = async (e) => {
+      e.preventDefault();
+
+      let fd = new FormData();
+      fd.append("category", title);
+      fd.append("myField", image);
+      fd.append("sellerId", sellorId);
+
+      try {
+        const { data } = await axios.post(
+          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category",
+          fd
+        );
+        console.log(data);
+        fetchData();
+        toast.success("Category Added");
+        props.onHide();
+      } catch (e) {
+        console.log(e);
+        toast.error(e.response.data.message);
+      }
+    };
     return (
       <Modal
         {...props}
@@ -20,16 +63,21 @@ const VendorCategory = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3">
+          <Form onSubmit={postHandler}>
+          <Form.Group className="mb-3">
               <Form.Label>Image</Form.Label>
-              <Form.Control type="file" />
+              <Form.Control
+                type="file"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control
+                type="text"
+                onChange={(e) => setTitle(e.target.value)}
+              />
             </Form.Group>
-
             <Button variant="outline-success" type="submit">
               Submit
             </Button>
@@ -39,6 +87,20 @@ const VendorCategory = () => {
       </Modal>
     );
   }
+
+  const deleteHandler = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category/${id}`
+      );
+      console.log(data);
+      toast.success("Category Deleted");
+      fetchData();
+    } catch (e) {
+      console.log(e);
+      toast.error("Try again after some time::");
+    }
+  };
 
   return (
     <>
@@ -50,7 +112,7 @@ const VendorCategory = () => {
       <section>
         <div className="pb-4 sticky top-0  w-full flex justify-between items-center bg-white">
           <span className="tracking-widest text-slate-900 font-semibold uppercase ">
-            All Categories ( Total : 1)
+            All Categories ( Total : {data?.length})
           </span>
           <Button
             variant="outline-success"
@@ -66,28 +128,34 @@ const VendorCategory = () => {
           <Table striped bordered hover>
             <thead>
               <tr>
+                <th> SN0. </th>
                 <th> Image</th>
                 <th> Title</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <img
-                    src="https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/4Y1pVuWED2pS20sMAOrKOh/200118633caf0c13ea7e35bfed4c8049/GettyImages-1146500478.jpg?w=1500&h=680&q=60&fit=fill&f=faces&fm=jpg&fl=progressive&auto=format%2Ccompress&dpr=1&w=1000&h="
-                    alt=""
-                    style={{ width: "100px" }}
-                  />
-                </td>
-                <td> Accessories</td>
-                <td>
-                  <i
-                    class="fa-solid fa-trash"
-                    style={{ color: "red", cursor: "pointer" }}
-                  ></i>
-                </td>
-              </tr>
+            {data?.map((i, index) => (
+                <tr key={index}>
+                <td> {index + 1} </td>
+                  <td>
+                    <img
+                      src={i.categoryImg?.url}
+                      alt={i.category}
+                      style={{ width: "100px" }}
+                    />
+                  </td>
+                  <td> {i.category} </td>
+                  <td>
+                    <i
+                      className="fa-solid fa-trash"
+                      style={{ color: "red", cursor: "pointer" }}
+                      onClick={() => deleteHandler(i._id)}
+                    ></i>
+                  </td>
+                </tr>
+              ))}
+           
             </tbody>
           </Table>
         </div>

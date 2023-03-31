@@ -1,6 +1,0 @@
-
-Banner => Category
-
-User => Active /InActive
-
-Reporting

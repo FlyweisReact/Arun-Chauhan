@@ -48,8 +48,8 @@ const Sidebar = ({ hamb, setHamb }) => {
   ];
 
   const logOut = () => {
-    localStorage.removeItem("token");
-    navigate("/");
+ localStorage.clear()
+  navigate("/vendor/login");
   };
 
   return (
