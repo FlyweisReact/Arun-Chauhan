@@ -33,13 +33,10 @@ const Coupon = () => {
     const [activationDate, setAd] = useState("");
     const [discount, setD] = useState("");
     const [minOrder, setM] = useState("");
-    const token = localStorage.getItem("token");
+
     const [productData, setProductData] = useState([]);
     const [sellerData, setSllerData] = useState([]);
     const [categoryData, setCategoryData] = useState([]);
-    const [productid, setProductId] = useState("");
-    const [category_id, setCategory_id] = useState("");
-    const [sellerId, setSellerId] = useState("");
 
     const fetchP = async () => {
       try {
@@ -51,39 +48,12 @@ const Coupon = () => {
         console.log(e);
       }
     };
-    const fetchS = async () => {
-      try {
-        const { data } = await axios.get(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
-        );
-        setCategoryData(data?.data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    const fetchC = async () => {
-      try {
-        const { data } = await axios.get(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/seller",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        setSllerData(data?.data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
 
     useEffect(() => {
       if (props.show === true) {
         fetchP();
-        fetchC();
-        fetchS();
       }
-    }, [props.show, token]);
+    }, [props.show]);
 
     const postHandler = async (e) => {
       e.preventDefault();
@@ -97,9 +67,6 @@ const Coupon = () => {
               activationDate,
               discount,
               minOrder,
-              productid , 
-              sellerId , 
-              category_id
             }
           );
           toast.success(`${data.code} Added`);
@@ -172,10 +139,7 @@ const Coupon = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>For Products</Form.Label>
-              <Form.Select
-                aria-label="Default select example"
-                onChange={(e) => setProductId(e.target.value)}
-              >
+              <Form.Select aria-label="Default select example">
                 <option>Open this select menu</option>
                 {productData?.map((i, index) => (
                   <option value={i._id} key={index}>
@@ -187,32 +151,14 @@ const Coupon = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>For Seller</Form.Label>
-              <Form.Select
-                aria-label="Default select example"
-                onChange={(e) => setSellerId(e.target.value)}
-              >
+              <Form.Select aria-label="Default select example">
                 <option>Open this select menu</option>
-                {sellerData?.map((i, index) => (
-                  <option value={i._id} key={index}>
-                    {" "}
-                    {i.name}{" "}
-                  </option>
-                ))}
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>For Category</Form.Label>
-              <Form.Select
-                aria-label="Default select example"
-                onChange={(e) => setCategory_id(e.target.value)}
-              >
+              <Form.Select aria-label="Default select example">
                 <option>Open this select menu</option>
-                {categoryData?.map((i, index) => (
-                  <option value={i._id} key={index}>
-                    {" "}
-                    {i.category}{" "}
-                  </option>
-                ))}
               </Form.Select>
             </Form.Group>
             <Button type="submit">Submit</Button>

@@ -99,7 +99,7 @@ const Coupon = () => {
               minOrder,
               productid , 
               sellerId , 
-              category_id
+              ca
             }
           );
           toast.success(`${data.code} Added`);

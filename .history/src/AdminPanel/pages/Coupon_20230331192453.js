@@ -97,9 +97,6 @@ const Coupon = () => {
               activationDate,
               discount,
               minOrder,
-              productid , 
-              sellerId , 
-              category_id
             }
           );
           toast.success(`${data.code} Added`);
@@ -187,10 +184,7 @@ const Coupon = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>For Seller</Form.Label>
-              <Form.Select
-                aria-label="Default select example"
-                onChange={(e) => setSellerId(e.target.value)}
-              >
+              <Form.Select aria-label="Default select example"      onChange={(e) => setProductId(e.target.value)}>
                 <option>Open this select menu</option>
                 {sellerData?.map((i, index) => (
                   <option value={i._id} key={index}>
@@ -202,10 +196,7 @@ const Coupon = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>For Category</Form.Label>
-              <Form.Select
-                aria-label="Default select example"
-                onChange={(e) => setCategory_id(e.target.value)}
-              >
+              <Form.Select aria-label="Default select example">
                 <option>Open this select menu</option>
                 {categoryData?.map((i, index) => (
                   <option value={i._id} key={index}>

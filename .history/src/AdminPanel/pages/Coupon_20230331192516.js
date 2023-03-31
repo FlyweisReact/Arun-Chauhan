@@ -97,9 +97,7 @@ const Coupon = () => {
               activationDate,
               discount,
               minOrder,
-              productid , 
-              sellerId , 
-              category_id
+              
             }
           );
           toast.success(`${data.code} Added`);

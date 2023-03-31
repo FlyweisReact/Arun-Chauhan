@@ -97,9 +97,6 @@ const Coupon = () => {
               activationDate,
               discount,
               minOrder,
-              productid , 
-              sellerId , 
-              category_id
             }
           );
           toast.success(`${data.code} Added`);
@@ -189,7 +186,7 @@ const Coupon = () => {
               <Form.Label>For Seller</Form.Label>
               <Form.Select
                 aria-label="Default select example"
-                onChange={(e) => setSellerId(e.target.value)}
+                onChange={(e) => setProductId(e.target.value)}
               >
                 <option>Open this select menu</option>
                 {sellerData?.map((i, index) => (
