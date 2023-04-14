@@ -250,7 +250,7 @@ const VendorService = () => {
       <section>
         <div className="pb-4 sticky top-0  w-full flex justify-between items-center bg-white">
           <span className="tracking-widest text-slate-900 font-semibold uppercase ">
-            All Services ( Total : { data === null ? "0" : data?.length })
+            All Services ( Total : {data?.length})
           </span>
           <Button
             variant="outline-success"
@@ -262,8 +262,8 @@ const VendorService = () => {
           </Button>
         </div>
 
-        {data?.length === 0 ? <Alert variant="info" >No Service Listed Yet </Alert>  : 
-        
+        {data === null ? <Alert variant="info" >No Service Listed Yet </Alert>  : ""}
+
         <div style={{ maxWidth: "100%", overflow: "auto" }}>
           <Table striped bordered hover>
             <thead>
@@ -326,8 +326,6 @@ const VendorService = () => {
             </tbody>
           </Table>
         </div>
-        }
-
       </section>
     </>
   );

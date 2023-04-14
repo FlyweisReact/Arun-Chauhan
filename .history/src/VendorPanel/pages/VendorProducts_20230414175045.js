@@ -112,6 +112,7 @@ const VendorProducts = () => {
         });
     };
 
+
     const postHandler = async (e) => {
       e.preventDefault();
       let fd = new FormData();
@@ -127,11 +128,14 @@ const VendorProducts = () => {
       fd.append("sellerId", sellorId);
       fd.append("stock", stock);
 
+      
       fd.append("color", color);
       fd.append("size", size);
       fd.append("sizeImage", sizeImage);
       fd.append("colorImage", colorImage);
 
+
+      
       try {
         const { data } = await axios.post(
           "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product",
@@ -206,37 +210,37 @@ const VendorProducts = () => {
               />
             </Form.Group>
             <div className="d-flex mb-3 gap-2">
-              <Form.Group>
-                <Form.Label>Color</Form.Label>
-                <Form.Control
-                  type="text"
-                  onChange={(e) => setColor(e.target.value)}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Image</Form.Label>
-                <Form.Control
-                  type="file"
-                  onChange={(e) => uploadColorImage(e)}
-                />
-              </Form.Group>
-            </div>
-            <div className="d-flex mb-3 gap-2">
-              <Form.Group>
-                <Form.Label>Size</Form.Label>
-                <Form.Control
-                  type="text"
-                  onChange={(e) => setSize(e.target.value)}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Image</Form.Label>
-                <Form.Control
-                  type="file"
-                  onChange={(e) => uploadSizeImage(e)}
-                />
-              </Form.Group>
-            </div>
+                  <Form.Group>
+                    <Form.Label>Color</Form.Label>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setColor(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Image</Form.Label>
+                    <Form.Control
+                      type="file"
+                      onChange={(e) => uploadColorImage(e)}
+                    />
+                  </Form.Group>
+                </div>
+                <div className="d-flex mb-3 gap-2">
+                  <Form.Group>
+                    <Form.Label>Size</Form.Label>
+                    <Form.Control
+                      type="text"
+                      onChange={(e) => setSize(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Image</Form.Label>
+                    <Form.Control
+                      type="file"
+                      onChange={(e) => uploadSizeImage(e)}
+                    />
+                  </Form.Group>
+                </div>
             <Form.Group className="mb-3">
               <Form.Select
                 aria-label="Default select example"
@@ -293,17 +297,17 @@ const VendorProducts = () => {
       <section>
         <div className="pb-4 sticky top-0  w-full flex justify-between items-center bg-white">
           <span className="tracking-widest text-slate-900 font-semibold uppercase ">
-            All Products (Total : {data === null ? "0" : data?.length} )
+            All Products (Total : {data?.length} )
           </span>
           <Button onClick={() => setModalShow(true)} variant="outline-success">
             Add Product
           </Button>
         </div>
 
+        {data?.data === null ? <Alert variant="info" >
+          
+        </Alert>}
 
-        {data?.length === 0 ? (
-          <Alert variant="info">No Product Listed Yet</Alert>
-        ) : (
         <div style={{ maxWidth: "100%", overflow: "auto" }}>
           <Table striped bordered hover>
             <thead>
@@ -424,13 +428,12 @@ const VendorProducts = () => {
                       ></i>
                     </div>
                   </td>
+                  
                 </tr>
               ))}
             </tbody>
           </Table>
         </div>
-        )}
-
       </section>
     </>
   );

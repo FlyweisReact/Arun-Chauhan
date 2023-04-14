@@ -1,7 +1,7 @@
 /** @format */
 
 import HOC from "../layout/HOC";
-import { Table, Modal, Button, Form, Alert } from "react-bootstrap";
+import { Table, Modal, Button, Form } from "react-bootstrap";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -179,7 +179,8 @@ const VendorSubCategory = () => {
           </Button>
         </div>
 
-        {data.length === 0 ? <Alert variant="info">No Sub-Categories Listed Yet </Alert> :
+        {data === null ? "" :""}
+
         <div style={{ maxWidth: "100%", overflow: "auto" }}>
           <Table striped bordered hover>
             <thead>
@@ -212,9 +213,6 @@ const VendorSubCategory = () => {
             </tbody>
           </Table>
         </div>
-        }
-
-    
       </section>
     </>
   );

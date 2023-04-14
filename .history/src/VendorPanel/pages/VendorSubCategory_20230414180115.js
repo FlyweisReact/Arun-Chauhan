@@ -179,40 +179,7 @@ const VendorSubCategory = () => {
           </Button>
         </div>
 
-        {data.length === 0 ? <Alert variant="info">No Sub-Categories Listed Yet </Alert> :
-        <div style={{ maxWidth: "100%", overflow: "auto" }}>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Sno.</th>
-                <th> Image</th>
-                <th> Title</th>
-                <th> Category</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map((i, index) => (
-                <tr key={index}>
-                  <td> {index + 1} </td>
-                  <td>
-                    <img src={i.image} alt="" style={{ width: "100px" }} />
-                  </td>
-                  <td>{i.title} </td>
-                  <td> {i.catgory?.category} </td>
-                  <td>
-                    <i
-                      className="fa-solid fa-trash"
-                      style={{ color: "#ff0000", cursor: "pointer" }}
-                      onClick={() => deleteHandler(i._id)}
-                    ></i>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-        }
+        {data.length === 0 ? <Alert variant="info">No Sub-Categories Listed Yet </Alert> :""}
 
     
       </section>

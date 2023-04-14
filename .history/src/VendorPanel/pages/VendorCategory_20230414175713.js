@@ -113,7 +113,7 @@ const VendorCategory = () => {
       <section>
         <div className="pb-4 sticky top-0  w-full flex justify-between items-center bg-white">
           <span className="tracking-widest text-slate-900 font-semibold uppercase ">
-            All Categories ( Total : {data === null ? '0' : data?.length})
+            All Categories ( Total : {data?.length})
           </span>
           <Button
             variant="outline-success"
@@ -125,42 +125,9 @@ const VendorCategory = () => {
           </Button>
         </div>
 
-        {data?.length=== 0 ? 
+        {data === null ? 
         <Alert variant="info" >No Category Listed Yet</Alert>
-         :     <div style={{ maxWidth: "100%", overflow: "auto" }}>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th> SN0. </th>
-                <th> Image</th>
-                <th> Title</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map((i, index) => (
-                <tr key={index}>
-                  <td> {index + 1} </td>
-                  <td>
-                    <img
-                      src={i.categoryImg?.url}
-                      alt={i.category}
-                      style={{ width: "100px" }}
-                    />
-                  </td>
-                  <td> {i.category} </td>
-                  <td>
-                    <i
-                      className="fa-solid fa-trash"
-                      style={{ color: "red", cursor: "pointer" }}
-                      onClick={() => deleteHandler(i._id)}
-                    ></i>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>}
+         :""}
 
    
       </section>

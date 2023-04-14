@@ -293,17 +293,16 @@ const VendorProducts = () => {
       <section>
         <div className="pb-4 sticky top-0  w-full flex justify-between items-center bg-white">
           <span className="tracking-widest text-slate-900 font-semibold uppercase ">
-            All Products (Total : {data === null ? "0" : data?.length} )
+            All Products (Total : {data?.length} )
           </span>
           <Button onClick={() => setModalShow(true)} variant="outline-success">
             Add Product
           </Button>
         </div>
-
-
-        {data?.length === 0 ? (
+        {data === null ? (
           <Alert variant="info">No Product Listed Yet</Alert>
         ) : (
+         
         <div style={{ maxWidth: "100%", overflow: "auto" }}>
           <Table striped bordered hover>
             <thead>

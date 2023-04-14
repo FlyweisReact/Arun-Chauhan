@@ -262,7 +262,7 @@ const VendorService = () => {
           </Button>
         </div>
 
-        {data?.length === 0 ? <Alert variant="info" >No Service Listed Yet </Alert>  : 
+        {data?.length === null ? <Alert variant="info" >No Service Listed Yet </Alert>  : 
         
         <div style={{ maxWidth: "100%", overflow: "auto" }}>
           <Table striped bordered hover>

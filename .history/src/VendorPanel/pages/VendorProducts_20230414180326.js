@@ -301,7 +301,7 @@ const VendorProducts = () => {
         </div>
 
 
-        {data?.length === 0 ? (
+        {data === 0 ? (
           <Alert variant="info">No Product Listed Yet</Alert>
         ) : (
         <div style={{ maxWidth: "100%", overflow: "auto" }}>

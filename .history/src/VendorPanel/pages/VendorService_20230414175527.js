@@ -250,7 +250,7 @@ const VendorService = () => {
       <section>
         <div className="pb-4 sticky top-0  w-full flex justify-between items-center bg-white">
           <span className="tracking-widest text-slate-900 font-semibold uppercase ">
-            All Services ( Total : { data === null ? "0" : data?.length })
+            All Services ( Total : {data?.length})
           </span>
           <Button
             variant="outline-success"
@@ -262,70 +262,8 @@ const VendorService = () => {
           </Button>
         </div>
 
-        {data?.length === 0 ? <Alert variant="info" >No Service Listed Yet </Alert>  : 
+        {data === null ? <Alert variant="info" >No Service Listed Yet </Alert>  : 
         
-        <div style={{ maxWidth: "100%", overflow: "auto" }}>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th> Sno.</th>
-                <th> Image</th>
-                <th> Title</th>
-                <th> Price</th>
-                <th> Discount (off)</th>
-                <th> Discription</th>
-                <th>Rating</th>
-                <th>What It'sInclude</th>
-                <th>Free Srvices</th>
-                <th>Sub-Category</th>
-                <th>Category</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map((i, index) => (
-                <tr key={index}>
-                  <td> {index + 1} </td>
-                  <td>
-                    <img
-                      src={i.serviceImg}
-                      alt={i.serviceName}
-                      style={{ width: "100px" }}
-                    />
-                  </td>
-                  <td>{i.title}</td>
-                  <td>₹{i.price}</td>
-                  <td>{i.discount}</td>
-                  <td>{i.desc}</td>
-                  <td> {i.reting} </td>
-                  <td>
-                    {i.include?.map((item) => (
-                      <p
-                        key={item}
-                        style={{ fontSize: "12px", maxWidth: "300px" }}
-                      >
-                        {" "}
-                        {item}{" "}
-                      </p>
-                    ))}
-                  </td>
-                  <td>{i.freeService}</td>
-                  <td>{i.subCategory?.title}</td>
-                  <td> {i.category?.category} </td>
-                  <td>
-                    <div style={{ display: "flex ", gap: "10px" }}>
-                      <i
-                        className="fa-solid fa-trash"
-                        style={{ color: "red", cursor: "pointer" }}
-                        onClick={() => deleteHandler(i._id)}
-                      ></i>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
         }
 
       </section>

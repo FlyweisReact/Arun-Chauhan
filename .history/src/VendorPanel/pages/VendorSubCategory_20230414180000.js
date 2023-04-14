@@ -178,8 +178,10 @@ const VendorSubCategory = () => {
             Add Sub-Categories
           </Button>
         </div>
+              {}
 
-        {data.length === 0 ? <Alert variant="info">No Sub-Categories Listed Yet </Alert> :
+        {/* {data.message === null ? <Alert variant="info">No </Alert> :""} */}
+
         <div style={{ maxWidth: "100%", overflow: "auto" }}>
           <Table striped bordered hover>
             <thead>
@@ -212,9 +214,6 @@ const VendorSubCategory = () => {
             </tbody>
           </Table>
         </div>
-        }
-
-    
       </section>
     </>
   );

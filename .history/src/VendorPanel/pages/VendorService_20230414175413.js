@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
-import { Table, Modal, Button, Form, Alert } from "react-bootstrap";
+import { Table, Modal, Button, Form } from "react-bootstrap";
 import { toast } from "react-toastify";
 import HOC from "../layout/HOC";
 
@@ -20,6 +20,7 @@ const VendorService = () => {
         `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service/seller/${sellorId}`
       );
       setData(data.data);
+      console.log(data)
     } catch (e) {
       console.log(e);
     }
@@ -250,7 +251,7 @@ const VendorService = () => {
       <section>
         <div className="pb-4 sticky top-0  w-full flex justify-between items-center bg-white">
           <span className="tracking-widest text-slate-900 font-semibold uppercase ">
-            All Services ( Total : { data === null ? "0" : data?.length })
+            All Services ( Total : {data?.length})
           </span>
           <Button
             variant="outline-success"
@@ -262,8 +263,6 @@ const VendorService = () => {
           </Button>
         </div>
 
-        {data?.length === 0 ? <Alert variant="info" >No Service Listed Yet </Alert>  : 
-        
         <div style={{ maxWidth: "100%", overflow: "auto" }}>
           <Table striped bordered hover>
             <thead>
@@ -326,8 +325,6 @@ const VendorService = () => {
             </tbody>
           </Table>
         </div>
-        }
-
       </section>
     </>
   );

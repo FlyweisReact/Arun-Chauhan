@@ -293,142 +293,16 @@ const VendorProducts = () => {
       <section>
         <div className="pb-4 sticky top-0  w-full flex justify-between items-center bg-white">
           <span className="tracking-widest text-slate-900 font-semibold uppercase ">
-            All Products (Total : {data === null ? "0" : data?.length} )
+            All Products (Total : {data?.length} )
           </span>
           <Button onClick={() => setModalShow(true)} variant="outline-success">
             Add Product
           </Button>
         </div>
-
-
-        {data?.length === 0 ? (
+        {data === null ? (
           <Alert variant="info">No Product Listed Yet</Alert>
         ) : (
-        <div style={{ maxWidth: "100%", overflow: "auto" }}>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th> Sno. </th>
-                <th> Image </th>
-                <th> Title</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Stock</th>
-                <th>Features</th>
-                <th>Category</th>
-                <th>Sub-Category</th>
-                <th>Color and Image</th>
-                <th>Size and Image</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map((i, index) => (
-                <tr key={index}>
-                  <td> {index + 1} </td>
-                  <td>
-                    <Carousel
-                      showStatus={false}
-                      showThumbs={false}
-                      showIndicators={false}
-                      dynamicHeight={false}
-                      stopOnHover={true}
-                      swipeable={true}
-                      emulateTouch={true}
-                      interval={1000}
-                      infiniteLoop={true}
-                      autoPlay={true}
-                      className="Car"
-                    >
-                      {i.productImg?.map((img, index) => (
-                        <img
-                          src={img.url}
-                          alt=""
-                          key={index}
-                          className="carouselImages"
-                        />
-                      ))}
-                    </Carousel>
-                  </td>
-
-                  <td> {i.productName} </td>
-                  <td> {i.descrption} </td>
-                  <td>₹{i.price} </td>
-                  <td> {i.stock} </td>
-                  <td>
-                    {i.features?.map((item, index) => (
-                      <span key={index}> {item}, </span>
-                    ))}
-                  </td>
-                  <td>{i.category_id?.category}</td>
-                  <td> {i.subCategory?.title} </td>
-                  <td>
-                    <Carousel
-                      showStatus={false}
-                      showThumbs={false}
-                      showIndicators={false}
-                      dynamicHeight={false}
-                      stopOnHover={true}
-                      swipeable={true}
-                      emulateTouch={true}
-                      interval={1000}
-                      infiniteLoop={true}
-                      autoPlay={true}
-                      className="Car"
-                    >
-                      {i.colors?.map((img, index) => (
-                        <div key={index}>
-                          <img
-                            src={img.colorImage}
-                            alt="img"
-                            className="ColorImage"
-                          />
-                          <p> {img.color} </p>
-                        </div>
-                      ))}
-                    </Carousel>
-                  </td>
-                  <td>
-                    <Carousel
-                      showStatus={false}
-                      showThumbs={false}
-                      showIndicators={false}
-                      dynamicHeight={false}
-                      stopOnHover={true}
-                      swipeable={true}
-                      emulateTouch={true}
-                      interval={2000}
-                      infiniteLoop={true}
-                      autoPlay={true}
-                      className="Car"
-                    >
-                      {i.size_of_product?.map((img, index) => (
-                        <div key={index}>
-                          <img
-                            src={img.sizeImage}
-                            alt="img"
-                            className="ColorImage"
-                          />
-                          <p> {img.size} </p>
-                        </div>
-                      ))}
-                    </Carousel>
-                  </td>
-
-                  <td>
-                    <div className="d-flex gap-2">
-                      <i
-                        className="fa-solid fa-trash"
-                        style={{ color: "red", cursor: "pointer" }}
-                        onClick={() => deleteHandler(i._id)}
-                      ></i>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
+         
         )}
 
       </section>
