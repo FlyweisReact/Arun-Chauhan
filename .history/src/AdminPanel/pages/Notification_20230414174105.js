@@ -178,7 +178,7 @@ const Notification = () => {
                   </td>
                   <td> {i.title} </td>
                   <td> {i.message} </td>
-                  <td> {i.vehicle} </td>
+                  <td> {i.} </td>
                   <td>
                     <i
                       class="fa-solid fa-trash"

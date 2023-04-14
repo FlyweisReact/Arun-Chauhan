@@ -105,7 +105,7 @@ const Sellers = () => {
               <Form.Control
                 type="number"
                 min={0}
-                onChange={(e) => setCount(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
 
@@ -114,13 +114,14 @@ const Sellers = () => {
               <Form.Control
                 type="number"
                 min={0}
-                onChange={(e) => setProductPrice(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
 
             <Button type="submit">Submit</Button>
           </Form>
         </Modal.Body>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     );
   }
@@ -183,7 +184,7 @@ const Sellers = () => {
                     </button>
                   </td>
                   <td> {i.count} </td>
-                  <td>₹{i.product_price}</td>
+                  <td>{i.product_price}</td>
                   <td>
                     {" "}
                     <i

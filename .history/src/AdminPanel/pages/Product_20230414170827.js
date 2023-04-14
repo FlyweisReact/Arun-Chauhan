@@ -252,7 +252,7 @@ const Product = () => {
                     <Form.Label>Image</Form.Label>
                     <Form.Control
                       type="file"
-                      onChange={(e) => uploadSizeImage(e)}
+                      onChange={(e) =>uploadSizeImage(e)}
                     />
                   </Form.Group>
                 </div>
@@ -461,16 +461,23 @@ const Product = () => {
                       autoPlay={true}
                       className="Car"
                     >
-                      {i.colors?.map((img, index) => (
-                        <div key={index}>
-                          <img
-                            src={img.colorImage}
-                            alt="img"
-                            className="ColorImage"
-                          />
-                          <p> {img.color} </p>
-                        </div>
-                      ))}
+                    {i}
+                      <div>
+                        <img
+                          src="https://en.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-lvse-inside-out-t-shirt-ready-to-wear--HIY47WJYN686_PM2_Front%20view.jpg"
+                          alt="img"
+                          className="ColorImage"
+                        />
+                        <p>Blue</p>
+                      </div>
+                      <div>
+                        <img
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRJuAAZuOuxHgRwSClRMfgfZqSEOgFhe8z4w&usqp=CAU"
+                          alt="img"
+                          className="ColorImage"
+                        />
+                        <p>Black</p>
+                      </div>
                     </Carousel>
                   </td>
                   <td>
@@ -487,16 +494,22 @@ const Product = () => {
                       autoPlay={true}
                       className="Car"
                     >
-                      {i.size_of_product?.map((img, index) => (
-                        <div key={index}>
-                          <img
-                            src={img.sizeImage}
-                            alt="img"
-                            className="ColorImage"
-                          />
-                          <p> {img.size} </p>
-                        </div>
-                      ))}
+                      <div>
+                        <img
+                          src="https://en.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-lvse-inside-out-t-shirt-ready-to-wear--HIY47WJYN686_PM2_Front%20view.jpg"
+                          alt="img"
+                          className="ColorImage"
+                        />
+                        <p>L</p>
+                      </div>
+                      <div>
+                        <img
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRJuAAZuOuxHgRwSClRMfgfZqSEOgFhe8z4w&usqp=CAU"
+                          alt="img"
+                          className="ColorImage"
+                        />
+                        <p>XLL</p>
+                      </div>
                     </Carousel>
                   </td>
 

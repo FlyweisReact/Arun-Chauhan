@@ -40,15 +40,14 @@ const Sellers = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [count, setCount] = useState("");
-    const [product_price, setProductPrice] = useState("");
+    cons
 
     const postHandler = async (e) => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
           "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/seller",
-          { name, email, password, count, product_price },
+          { name, email, password },
           {
             headers: {
               Authorization: `Bearer ${token} `,
@@ -102,25 +101,18 @@ const Sellers = () => {
 
             <Form.Group className="mb-3">
               <Form.Label>Free Product Count</Form.Label>
-              <Form.Control
-                type="number"
-                min={0}
-                onChange={(e) => setCount(e.target.value)}
-              />
+              <Form.Control type='number' min={0} />
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Per Product Price</Form.Label>
-              <Form.Control
-                type="number"
-                min={0}
-                onChange={(e) => setProductPrice(e.target.value)}
-              />
+              <Form.Control type='number' min={0} />
             </Form.Group>
 
             <Button type="submit">Submit</Button>
           </Form>
         </Modal.Body>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     );
   }
@@ -183,7 +175,7 @@ const Sellers = () => {
                     </button>
                   </td>
                   <td> {i.count} </td>
-                  <td>₹{i.product_price}</td>
+                  <td>{i.product_price}</td>
                   <td>
                     {" "}
                     <i

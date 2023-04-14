@@ -490,7 +490,7 @@ const Product = () => {
                       {i.size_of_product?.map((img, index) => (
                         <div key={index}>
                           <img
-                            src={img.sizeImage}
+                            src={img.colorImage}
                             alt="img"
                             className="ColorImage"
                           />

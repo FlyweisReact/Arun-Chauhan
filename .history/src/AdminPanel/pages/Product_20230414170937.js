@@ -252,7 +252,7 @@ const Product = () => {
                     <Form.Label>Image</Form.Label>
                     <Form.Control
                       type="file"
-                      onChange={(e) => uploadSizeImage(e)}
+                      onChange={(e) =>uploadSizeImage(e)}
                     />
                   </Form.Group>
                 </div>
@@ -461,16 +461,18 @@ const Product = () => {
                       autoPlay={true}
                       className="Car"
                     >
-                      {i.colors?.map((img, index) => (
-                        <div key={index}>
-                          <img
-                            src={img.colorImage}
-                            alt="img"
-                            className="ColorImage"
-                          />
-                          <p> {img.color} </p>
-                        </div>
-                      ))}
+                    {i.colors?.map((img , index) => (
+                      <div key={index}>
+                        <img
+                        src={img.colorImage}
+                          alt="img"
+                          className="ColorImage"
+                        />
+                        <p> {img.color} </p>
+                      </div>
+                    
+                    ))}
+                    
                     </Carousel>
                   </td>
                   <td>
@@ -487,16 +489,17 @@ const Product = () => {
                       autoPlay={true}
                       className="Car"
                     >
-                      {i.size_of_product?.map((img, index) => (
-                        <div key={index}>
-                          <img
-                            src={img.sizeImage}
-                            alt="img"
-                            className="ColorImage"
-                          />
-                          <p> {img.size} </p>
-                        </div>
-                      ))}
+                             {i.colors?.map((img , index) => (
+                      <div key={index}>
+                        <img
+                        src={img.colorImage}
+                          alt="img"
+                          className="ColorImage"
+                        />
+                        <p> {img.color} </p>
+                      </div>
+                    
+                    ))}
                     </Carousel>
                   </td>
 

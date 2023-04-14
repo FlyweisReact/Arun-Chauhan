@@ -121,6 +121,7 @@ const Sellers = () => {
             <Button type="submit">Submit</Button>
           </Form>
         </Modal.Body>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     );
   }
@@ -183,7 +184,7 @@ const Sellers = () => {
                     </button>
                   </td>
                   <td> {i.count} </td>
-                  <td>₹{i.product_price}</td>
+                  <td>{i.product_price}</td>
                   <td>
                     {" "}
                     <i

@@ -69,50 +69,6 @@ const VendorProducts = () => {
     const [subCat, setSubCat] = useState("");
     const [stock, setStock] = useState("");
 
-    const [color, setColor] = useState("");
-    const [size, setSize] = useState("");
-    const [sizeImage, setSizeImage] = useState("");
-    const [colorImage, setColorImage] = useState("");
-
-    const uploadColorImage = (e) => {
-      const data = new FormData();
-      data.append("file", e.target.files[0]);
-      data.append("upload_preset", "ml_default");
-      data.append("cloud_name", "dbcnha741");
-      fetch("https://api.cloudinary.com/v1_1/dbcnha741/image/upload", {
-        method: "post",
-        body: data,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setColorImage(data.url);
-          console.log(data.url);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-
-    const uploadSizeImage = (e) => {
-      const data = new FormData();
-      data.append("file", e.target.files[0]);
-      data.append("upload_preset", "ml_default");
-      data.append("cloud_name", "dbcnha741");
-      fetch("https://api.cloudinary.com/v1_1/dbcnha741/image/upload", {
-        method: "post",
-        body: data,
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setSizeImage(data.url);
-          console.log(data.url);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-
-
     const postHandler = async (e) => {
       e.preventDefault();
       let fd = new FormData();
@@ -127,15 +83,6 @@ const VendorProducts = () => {
       fd.append("subCategory", subCat);
       fd.append("sellerId", sellorId);
       fd.append("stock", stock);
-
-      
-      fd.append("color", color);
-      fd.append("size", size);
-      fd.append("sizeImage", sizeImage);
-      fd.append("colorImage", colorImage);
-
-
-      
       try {
         const { data } = await axios.post(
           "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product",
@@ -212,33 +159,21 @@ const VendorProducts = () => {
             <div className="d-flex mb-3 gap-2">
                   <Form.Group>
                     <Form.Label>Color</Form.Label>
-                    <Form.Control
-                      type="text"
-                      onChange={(e) => setColor(e.target.value)}
-                    />
+                    <Form.Control type="text" />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Image</Form.Label>
-                    <Form.Control
-                      type="file"
-                      onChange={(e) => uploadColorImage(e)}
-                    />
+                    <Form.Control type="file" />
                   </Form.Group>
                 </div>
                 <div className="d-flex mb-3 gap-2">
                   <Form.Group>
                     <Form.Label>Size</Form.Label>
-                    <Form.Control
-                      type="text"
-                      onChange={(e) => setSize(e.target.value)}
-                    />
+                    <Form.Control type="text" />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Image</Form.Label>
-                    <Form.Control
-                      type="file"
-                      onChange={(e) => uploadSizeImage(e)}
-                    />
+                    <Form.Control type="file" />
                   </Form.Group>
                 </div>
             <Form.Group className="mb-3">

@@ -183,7 +183,7 @@ const Sellers = () => {
                     </button>
                   </td>
                   <td> {i.count} </td>
-                  <td>₹{i.product_price}</td>
+                  <td>{i.product_price}</td>
                   <td>
                     {" "}
                     <i

@@ -77,7 +77,7 @@ const Product = () => {
     const [color, setColor] = useState("");
     const [size, setSize] = useState("");
     const [sizeImage, setSizeImage] = useState("");
-    const [colorImage, setColorImage] = useState("");
+    const [colorImage,setColorImage   ] = useState("");
 
     const uploadColorImage = (e) => {
       const data = new FormData();
@@ -109,13 +109,14 @@ const Product = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          setSizeImage(data.url);
+          set(data.url);
           console.log(data.url);
         })
         .catch((err) => {
           console.log(err);
         });
     };
+
 
     const commissionFull = commisionSir + commision;
 
@@ -132,11 +133,6 @@ const Product = () => {
       fd.append("category_id", category);
       fd.append("subCategory", subCat);
       fd.append("stock", stock);
-
-      fd.append("color", color);
-      fd.append("size", size);
-      fd.append("sizeImage", sizeImage);
-      fd.append("colorImage", colorImage);
 
       try {
         const { data } = await axios.post(
@@ -227,33 +223,21 @@ const Product = () => {
                 <div className="d-flex mb-3 gap-2">
                   <Form.Group>
                     <Form.Label>Color</Form.Label>
-                    <Form.Control
-                      type="text"
-                      onChange={(e) => setColor(e.target.value)}
-                    />
+                    <Form.Control type="text" />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Image</Form.Label>
-                    <Form.Control
-                      type="file"
-                      onChange={(e) => uploadColorImage(e)}
-                    />
+                    <Form.Control type="file" />
                   </Form.Group>
                 </div>
                 <div className="d-flex mb-3 gap-2">
                   <Form.Group>
                     <Form.Label>Size</Form.Label>
-                    <Form.Control
-                      type="text"
-                      onChange={(e) => setSize(e.target.value)}
-                    />
+                    <Form.Control type="text" />
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Image</Form.Label>
-                    <Form.Control
-                      type="file"
-                      onChange={(e) => uploadSizeImage(e)}
-                    />
+                    <Form.Control type="file" />
                   </Form.Group>
                 </div>
 
@@ -461,16 +445,22 @@ const Product = () => {
                       autoPlay={true}
                       className="Car"
                     >
-                      {i.colors?.map((img, index) => (
-                        <div key={index}>
-                          <img
-                            src={img.colorImage}
-                            alt="img"
-                            className="ColorImage"
-                          />
-                          <p> {img.color} </p>
-                        </div>
-                      ))}
+                      <div>
+                        <img
+                          src="https://en.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-lvse-inside-out-t-shirt-ready-to-wear--HIY47WJYN686_PM2_Front%20view.jpg"
+                          alt="img"
+                          className="ColorImage"
+                        />
+                        <p>Blue</p>
+                      </div>
+                      <div>
+                        <img
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRJuAAZuOuxHgRwSClRMfgfZqSEOgFhe8z4w&usqp=CAU"
+                          alt="img"
+                          className="ColorImage"
+                        />
+                        <p>Black</p>
+                      </div>
                     </Carousel>
                   </td>
                   <td>
@@ -487,16 +477,22 @@ const Product = () => {
                       autoPlay={true}
                       className="Car"
                     >
-                      {i.size_of_product?.map((img, index) => (
-                        <div key={index}>
-                          <img
-                            src={img.sizeImage}
-                            alt="img"
-                            className="ColorImage"
-                          />
-                          <p> {img.size} </p>
-                        </div>
-                      ))}
+                      <div>
+                        <img
+                          src="https://en.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-lvse-inside-out-t-shirt-ready-to-wear--HIY47WJYN686_PM2_Front%20view.jpg"
+                          alt="img"
+                          className="ColorImage"
+                        />
+                        <p>L</p>
+                      </div>
+                      <div>
+                        <img
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRJuAAZuOuxHgRwSClRMfgfZqSEOgFhe8z4w&usqp=CAU"
+                          alt="img"
+                          className="ColorImage"
+                        />
+                        <p>XLL</p>
+                      </div>
                     </Carousel>
                   </td>
 

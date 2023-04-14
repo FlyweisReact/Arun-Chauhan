@@ -105,10 +105,10 @@ const Notification = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Select aria-label="Default select example" onChange={(e) => setVehicle(e.target.value)} >
+              <Form.Select aria-label="Default select example" onChange={(e) => setVe} >
                 <option>-- Select Vehicle --</option>
-                <option value="Two Wheeler">Two Wheeler</option>
-                <option value="Four Wheeler">Four Wheeler</option>
+                <option value="1">Two Wheeler</option>
+                <option value="2">Four Wheeler</option>
               </Form.Select>
             </Form.Group>
 
@@ -178,7 +178,7 @@ const Notification = () => {
                   </td>
                   <td> {i.title} </td>
                   <td> {i.message} </td>
-                  <td> {i.vehicle} </td>
+                  <td> Two / Four Wheeler </td>
                   <td>
                     <i
                       class="fa-solid fa-trash"
