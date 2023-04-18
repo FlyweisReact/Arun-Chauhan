@@ -21,7 +21,7 @@ const VendorProducts = () => {
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/seller/${sellorId}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/seller/${sellorId}`
       );
       setData(data.data);
     } catch (e) {
@@ -32,7 +32,7 @@ const VendorProducts = () => {
   const fetchCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category"
       );
       setCatedogryData(data.data);
     } catch (e) {
@@ -43,7 +43,7 @@ const VendorProducts = () => {
   const fetchSubCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
       );
       setSubCategoryData(data.result);
     } catch (e) {
@@ -134,7 +134,7 @@ const VendorProducts = () => {
 
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product",
           fd
         );
         console.log(data);
@@ -273,7 +273,7 @@ const VendorProducts = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`
       );
       console.log(data);
       toast.success("Product Deleted");
@@ -299,7 +299,7 @@ const VendorProducts = () => {
             Add Product
           </Button>
         </div>
-      {console.log(data)}
+        {console.log(data)}
         {data?.data === null ? (
           <Alert variant="info">No Product Listed Yet</Alert>
         ) : (

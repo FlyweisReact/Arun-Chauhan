@@ -21,7 +21,7 @@ const VendorProducts = () => {
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/seller/${sellorId}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/seller/${sellorId}`
       );
       setData(data.data);
     } catch (e) {
@@ -32,7 +32,7 @@ const VendorProducts = () => {
   const fetchCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category"
       );
       setCatedogryData(data.data);
     } catch (e) {
@@ -43,7 +43,7 @@ const VendorProducts = () => {
   const fetchSubCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
       );
       setSubCategoryData(data.result);
     } catch (e) {
@@ -112,7 +112,6 @@ const VendorProducts = () => {
         });
     };
 
-
     const postHandler = async (e) => {
       e.preventDefault();
       let fd = new FormData();
@@ -128,17 +127,14 @@ const VendorProducts = () => {
       fd.append("sellerId", sellorId);
       fd.append("stock", stock);
 
-      
       fd.append("color", color);
       fd.append("size", size);
       fd.append("sizeImage", sizeImage);
       fd.append("colorImage", colorImage);
 
-
-      
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product",
           fd
         );
         console.log(data);
@@ -210,37 +206,37 @@ const VendorProducts = () => {
               />
             </Form.Group>
             <div className="d-flex mb-3 gap-2">
-                  <Form.Group>
-                    <Form.Label>Color</Form.Label>
-                    <Form.Control
-                      type="text"
-                      onChange={(e) => setColor(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Image</Form.Label>
-                    <Form.Control
-                      type="file"
-                      onChange={(e) => uploadColorImage(e)}
-                    />
-                  </Form.Group>
-                </div>
-                <div className="d-flex mb-3 gap-2">
-                  <Form.Group>
-                    <Form.Label>Size</Form.Label>
-                    <Form.Control
-                      type="text"
-                      onChange={(e) => setSize(e.target.value)}
-                    />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Image</Form.Label>
-                    <Form.Control
-                      type="file"
-                      onChange={(e) => uploadSizeImage(e)}
-                    />
-                  </Form.Group>
-                </div>
+              <Form.Group>
+                <Form.Label>Color</Form.Label>
+                <Form.Control
+                  type="text"
+                  onChange={(e) => setColor(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Image</Form.Label>
+                <Form.Control
+                  type="file"
+                  onChange={(e) => uploadColorImage(e)}
+                />
+              </Form.Group>
+            </div>
+            <div className="d-flex mb-3 gap-2">
+              <Form.Group>
+                <Form.Label>Size</Form.Label>
+                <Form.Control
+                  type="text"
+                  onChange={(e) => setSize(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Image</Form.Label>
+                <Form.Control
+                  type="file"
+                  onChange={(e) => uploadSizeImage(e)}
+                />
+              </Form.Group>
+            </div>
             <Form.Group className="mb-3">
               <Form.Select
                 aria-label="Default select example"
@@ -277,7 +273,7 @@ const VendorProducts = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`
       );
       console.log(data);
       toast.success("Product Deleted");
@@ -304,9 +300,7 @@ const VendorProducts = () => {
           </Button>
         </div>
 
-        {data?.data === null ? <Alert variant="info" >
-
-        </Alert> : ""}
+        {data?.data === null ? <Alert variant="info"></Alert> : ""}
 
         <div style={{ maxWidth: "100%", overflow: "auto" }}>
           <Table striped bordered hover>
@@ -428,7 +422,6 @@ const VendorProducts = () => {
                       ></i>
                     </div>
                   </td>
-                  
                 </tr>
               ))}
             </tbody>

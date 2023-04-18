@@ -17,7 +17,7 @@ const VendorService = () => {
   const fetchHandler = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service/seller/${sellorId}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/service/seller/${sellorId}`
       );
       setData(data.data);
     } catch (e) {
@@ -28,7 +28,7 @@ const VendorService = () => {
   const fetchSub = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
       );
       setSubCat(data.result);
     } catch (e) {
@@ -39,7 +39,7 @@ const VendorService = () => {
   const fetchCat = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category"
       );
       setCatData(data.data);
     } catch (e) {
@@ -92,7 +92,7 @@ const VendorService = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/service",
           {
             serviceName: title,
             serviceImg: url,
@@ -231,7 +231,7 @@ const VendorService = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/service/${id}`
       );
       toast.success(data.message);
       fetchHandler();
@@ -262,72 +262,72 @@ const VendorService = () => {
           </Button>
         </div>
 
-        {data === null ? <Alert variant="info" >No Service Listed Yet </Alert>  : 
-        
-        <div style={{ maxWidth: "100%", overflow: "auto" }}>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th> Sno.</th>
-                <th> Image</th>
-                <th> Title</th>
-                <th> Price</th>
-                <th> Discount (off)</th>
-                <th> Discription</th>
-                <th>Rating</th>
-                <th>What It'sInclude</th>
-                <th>Free Srvices</th>
-                <th>Sub-Category</th>
-                <th>Category</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map((i, index) => (
-                <tr key={index}>
-                  <td> {index + 1} </td>
-                  <td>
-                    <img
-                      src={i.serviceImg}
-                      alt={i.serviceName}
-                      style={{ width: "100px" }}
-                    />
-                  </td>
-                  <td>{i.title}</td>
-                  <td>₹{i.price}</td>
-                  <td>{i.discount}</td>
-                  <td>{i.desc}</td>
-                  <td> {i.reting} </td>
-                  <td>
-                    {i.include?.map((item) => (
-                      <p
-                        key={item}
-                        style={{ fontSize: "12px", maxWidth: "300px" }}
-                      >
-                        {" "}
-                        {item}{" "}
-                      </p>
-                    ))}
-                  </td>
-                  <td>{i.freeService}</td>
-                  <td>{i.subCategory?.title}</td>
-                  <td> {i.category?.category} </td>
-                  <td>
-                    <div style={{ display: "flex ", gap: "10px" }}>
-                      <i
-                        className="fa-solid fa-trash"
-                        style={{ color: "red", cursor: "pointer" }}
-                        onClick={() => deleteHandler(i._id)}
-                      ></i>
-                    </div>
-                  </td>
+        {data === null ? (
+          <Alert variant="info">No Service Listed Yet </Alert>
+        ) : (
+          <div style={{ maxWidth: "100%", overflow: "auto" }}>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th> Sno.</th>
+                  <th> Image</th>
+                  <th> Title</th>
+                  <th> Price</th>
+                  <th> Discount (off)</th>
+                  <th> Discription</th>
+                  <th>Rating</th>
+                  <th>What It'sInclude</th>
+                  <th>Free Srvices</th>
+                  <th>Sub-Category</th>
+                  <th>Category</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-        }
-
+              </thead>
+              <tbody>
+                {data?.map((i, index) => (
+                  <tr key={index}>
+                    <td> {index + 1} </td>
+                    <td>
+                      <img
+                        src={i.serviceImg}
+                        alt={i.serviceName}
+                        style={{ width: "100px" }}
+                      />
+                    </td>
+                    <td>{i.title}</td>
+                    <td>₹{i.price}</td>
+                    <td>{i.discount}</td>
+                    <td>{i.desc}</td>
+                    <td> {i.reting} </td>
+                    <td>
+                      {i.include?.map((item) => (
+                        <p
+                          key={item}
+                          style={{ fontSize: "12px", maxWidth: "300px" }}
+                        >
+                          {" "}
+                          {item}{" "}
+                        </p>
+                      ))}
+                    </td>
+                    <td>{i.freeService}</td>
+                    <td>{i.subCategory?.title}</td>
+                    <td> {i.category?.category} </td>
+                    <td>
+                      <div style={{ display: "flex ", gap: "10px" }}>
+                        <i
+                          className="fa-solid fa-trash"
+                          style={{ color: "red", cursor: "pointer" }}
+                          onClick={() => deleteHandler(i._id)}
+                        ></i>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        )}
       </section>
     </>
   );

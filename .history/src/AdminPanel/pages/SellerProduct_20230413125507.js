@@ -16,7 +16,7 @@ const SellerProduct = () => {
   const fetchHandler = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/seller/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/seller/${id}`
       );
       setData(data.data);
     } catch (e) {
@@ -31,7 +31,7 @@ const SellerProduct = () => {
   const statusHandler = async (id) => {
     try {
       const { data } = await axios.post(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/status/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/status/${id}`
       );
       console.log(data);
       alert("Status Changed");
@@ -44,7 +44,7 @@ const SellerProduct = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`
       );
       console.log(data);
       toast.success("Product Deleted");

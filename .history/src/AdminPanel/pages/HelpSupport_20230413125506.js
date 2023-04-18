@@ -15,7 +15,7 @@ const HelpSupport = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/help"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/help"
       );
       setData(data.result);
       setDataCount(data.result.length);
@@ -27,7 +27,7 @@ const HelpSupport = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/help/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/help/${id}`
       );
       toast.success(data.message);
       fetchData();
@@ -49,7 +49,7 @@ const HelpSupport = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/help/",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/help/",
           { name, email }
         );
         toast.success(`${data.message.name} Added`);

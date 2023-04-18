@@ -16,7 +16,7 @@ const SubCategory = () => {
   const fetchHandler = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
       );
       setData(data.result);
       setDataCount(data.result.length);
@@ -29,7 +29,7 @@ const SubCategory = () => {
   const fetchCategoryHandler = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category"
       );
       setCatData(data.data);
     } catch (e) {
@@ -74,7 +74,7 @@ const SubCategory = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/",
           {
             image: url,
             title,
@@ -150,7 +150,7 @@ const SubCategory = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/${id}`
       );
       toast.success(data.message);
       fetchHandler();

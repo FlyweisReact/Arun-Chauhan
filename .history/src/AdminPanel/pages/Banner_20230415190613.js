@@ -1,20 +1,23 @@
 /** @format */
-import HOC from "../layout/HOC";
-import { Table, Modal, Button, Form } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { toast } from "react-toastify";
 
-const Notification = () => {
-  const [modalShow, setModalShow] = useState(false);
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Modal, Form, Button } from "react-bootstrap";
+import { toast } from "react-toastify";
+import HOC from "../layout/HOC";
+
+const Banner = () => {
+  const [modalShow, setModalShow] = React.useState(false);
   const [data, setData] = useState([]);
+  const [dataCount, setDataCount] = useState("");
 
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/notify"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/banner/"
       );
-      setData(data.message);
+      setData(data.data);
+      setDataCount(data.data.length);
     } catch (e) {
       console.log(e);
     }
@@ -22,15 +25,14 @@ const Notification = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, []);n
 
   function MyVerticallyCenteredModal(props) {
-    const [message, setMessage] = useState("");
-    const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
+    const [title, setTitle] = useState("");
 
-    const UploadImage = (e) => {
+    const postthumbImage = (e) => {
       const data = new FormData();
       data.append("file", image);
       data.append("upload_preset", "ml_default");
@@ -49,18 +51,27 @@ const Notification = () => {
         });
     };
 
+    const token = localStorage.getItem("token");
+
     const postHandler = async (e) => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/notify",
-          { image: url, title, message }
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/banner/",
+          { image: url, title },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
-        toast.success(`${data.message.title} Added`);
+        console.log(data);
+        toast.success("Added");
         fetchData();
         props.onHide();
       } catch (e) {
         console.log(e);
+        toast.error("Please try again after some time:::");
       }
     };
 
@@ -73,7 +84,7 @@ const Notification = () => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Add Notification
+            Add Banners
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -92,22 +103,19 @@ const Notification = () => {
                 type="text"
                 required
                 onChange={(e) => setTitle(e.target.value)}
-                onClick={() => UploadImage()}
+                onClick={() => postthumbImage()}
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Message</Form.Label>
-              <Form.Control
-                type="text"
-                required
-                onChange={(e) => setMessage(e.target.value)}
-              />
+              <Form.Select aria-label="Default select example">
+                <option>Category</option>
+                <option> Accessories </option>
+                <option> Mechanical Services </option>
+                <option> Service and Detailing </option>
+                <option> Value Add Services</option>
+              </Form.Select>
             </Form.Group>
-            <Form.Group className="mb-3"></Form.Group>
-
-            <Button variant="outline-success" type="submit">
-              Submit
-            </Button>
+            <Button type="submit">Submit</Button>
           </Form>
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
@@ -118,10 +126,9 @@ const Notification = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/notify/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/banner/${id}`
       );
-      console.log(data);
-      toast.success("Deleted");
+      toast.success(`${data.data.title} Deleted`);
       fetchData();
     } catch (e) {
       console.log(e);
@@ -138,57 +145,26 @@ const Notification = () => {
       <section>
         <div className="pb-4 sticky top-0  w-full flex justify-between items-center bg-white">
           <span className="tracking-widest text-slate-900 font-semibold uppercase ">
-            All Notification ( Total : {data?.length})
+            All Banners ( Total : {dataCount})
           </span>
-          <Button variant="outline-success" onClick={() => setModalShow(true)}>
-            Add
+          <Button onClick={() => setModalShow(true)} variant="outline-success">
+            Add Banners
           </Button>
         </div>
 
-        <div style={{ maxWidth: "100%", overflow: "auto" }}>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th> Sno.</th>
-                <th> Image </th>
-                <th> Title </th>
-                <th> Message </th>
-                <th>Vehicle</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map((i, index) => (
-                <tr key={index}>
-                  <td> {index + 1} </td>
-                  <td>
-                    {" "}
-                    <img
-                      src={i.image}
-                      alt={i.title}
-                      style={{ width: "100px" }}
-                    />{" "}
-                  </td>
-                  <td> {i.title} </td>
-                  <td> {i.message} </td>
-                  <td> Two / Four Wheeler </td>
-                  <td>
-                    <i
-                      class="fa-solid fa-trash"
-                      style={{ color: "red", cursor: "pointer" }}
-                      onClick={() => deleteHandler(i._id)}
-                    >
-                      {" "}
-                    </i>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+        <div className="three-Sec">
+          {data?.map((i, index) => (
+            <div key={index}>
+              <img src={i.image} alt={i.title} />
+              <p> Title : {i.title}</p>
+              <p> Category : Accessories </p>
+              <button onClick={() => deleteHandler(i._id)}>Delete</button>
+            </div>
+          ))}
         </div>
       </section>
     </>
   );
 };
 
-export default HOC(Notification);
+export default HOC(Banner);

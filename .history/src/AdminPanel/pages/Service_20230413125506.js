@@ -17,7 +17,7 @@ const Service = () => {
   const fetchHandler = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/service"
       );
       setData(data.data);
       setDataCount(data.data.length);
@@ -30,7 +30,7 @@ const Service = () => {
   const fetchSub = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
       );
       setSubCat(data.result);
     } catch (e) {
@@ -41,7 +41,7 @@ const Service = () => {
   const fetchCat = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category"
       );
       setCatData(data.data);
     } catch (e) {
@@ -98,7 +98,7 @@ const Service = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/service",
           {
             serviceName: title,
             serviceImg: url,
@@ -128,7 +128,7 @@ const Service = () => {
       fd.append("status", status);
       try {
         const { data } = await axios.put(
-          `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service/${id}`,
+          `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/service/${id}`,
           fd
         );
         console.log(data);
@@ -280,7 +280,7 @@ const Service = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/service/${id}`
       );
       toast.success(data.message);
       fetchHandler();

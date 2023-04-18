@@ -21,7 +21,7 @@ const VendorProducts = () => {
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/seller/${sellorId}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/seller/${sellorId}`
       );
       setData(data.data);
     } catch (e) {
@@ -32,7 +32,7 @@ const VendorProducts = () => {
   const fetchCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category"
       );
       setCatedogryData(data.data);
     } catch (e) {
@@ -43,7 +43,7 @@ const VendorProducts = () => {
   const fetchSubCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
       );
       setSubCategoryData(data.result);
     } catch (e) {
@@ -134,7 +134,7 @@ const VendorProducts = () => {
 
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product",
           fd
         );
         console.log(data);
@@ -273,7 +273,7 @@ const VendorProducts = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`
       );
       console.log(data);
       toast.success("Product Deleted");
@@ -302,134 +302,132 @@ const VendorProducts = () => {
         {data === null ? (
           <Alert variant="info">No Product Listed Yet</Alert>
         ) : (
-         
-        <div style={{ maxWidth: "100%", overflow: "auto" }}>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th> Sno. </th>
-                <th> Image </th>
-                <th> Title</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Stock</th>
-                <th>Features</th>
-                <th>Category</th>
-                <th>Sub-Category</th>
-                <th>Color and Image</th>
-                <th>Size and Image</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map((i, index) => (
-                <tr key={index}>
-                  <td> {index + 1} </td>
-                  <td>
-                    <Carousel
-                      showStatus={false}
-                      showThumbs={false}
-                      showIndicators={false}
-                      dynamicHeight={false}
-                      stopOnHover={true}
-                      swipeable={true}
-                      emulateTouch={true}
-                      interval={1000}
-                      infiniteLoop={true}
-                      autoPlay={true}
-                      className="Car"
-                    >
-                      {i.productImg?.map((img, index) => (
-                        <img
-                          src={img.url}
-                          alt=""
-                          key={index}
-                          className="carouselImages"
-                        />
-                      ))}
-                    </Carousel>
-                  </td>
-
-                  <td> {i.productName} </td>
-                  <td> {i.descrption} </td>
-                  <td>₹{i.price} </td>
-                  <td> {i.stock} </td>
-                  <td>
-                    {i.features?.map((item, index) => (
-                      <span key={index}> {item}, </span>
-                    ))}
-                  </td>
-                  <td>{i.category_id?.category}</td>
-                  <td> {i.subCategory?.title} </td>
-                  <td>
-                    <Carousel
-                      showStatus={false}
-                      showThumbs={false}
-                      showIndicators={false}
-                      dynamicHeight={false}
-                      stopOnHover={true}
-                      swipeable={true}
-                      emulateTouch={true}
-                      interval={1000}
-                      infiniteLoop={true}
-                      autoPlay={true}
-                      className="Car"
-                    >
-                      {i.colors?.map((img, index) => (
-                        <div key={index}>
-                          <img
-                            src={img.colorImage}
-                            alt="img"
-                            className="ColorImage"
-                          />
-                          <p> {img.color} </p>
-                        </div>
-                      ))}
-                    </Carousel>
-                  </td>
-                  <td>
-                    <Carousel
-                      showStatus={false}
-                      showThumbs={false}
-                      showIndicators={false}
-                      dynamicHeight={false}
-                      stopOnHover={true}
-                      swipeable={true}
-                      emulateTouch={true}
-                      interval={2000}
-                      infiniteLoop={true}
-                      autoPlay={true}
-                      className="Car"
-                    >
-                      {i.size_of_product?.map((img, index) => (
-                        <div key={index}>
-                          <img
-                            src={img.sizeImage}
-                            alt="img"
-                            className="ColorImage"
-                          />
-                          <p> {img.size} </p>
-                        </div>
-                      ))}
-                    </Carousel>
-                  </td>
-
-                  <td>
-                    <div className="d-flex gap-2">
-                      <i
-                        className="fa-solid fa-trash"
-                        style={{ color: "red", cursor: "pointer" }}
-                        onClick={() => deleteHandler(i._id)}
-                      ></i>
-                    </div>
-                  </td>
+          <div style={{ maxWidth: "100%", overflow: "auto" }}>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th> Sno. </th>
+                  <th> Image </th>
+                  <th> Title</th>
+                  <th>Description</th>
+                  <th>Amount</th>
+                  <th>Stock</th>
+                  <th>Features</th>
+                  <th>Category</th>
+                  <th>Sub-Category</th>
+                  <th>Color and Image</th>
+                  <th>Size and Image</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-        )}
+              </thead>
+              <tbody>
+                {data?.map((i, index) => (
+                  <tr key={index}>
+                    <td> {index + 1} </td>
+                    <td>
+                      <Carousel
+                        showStatus={false}
+                        showThumbs={false}
+                        showIndicators={false}
+                        dynamicHeight={false}
+                        stopOnHover={true}
+                        swipeable={true}
+                        emulateTouch={true}
+                        interval={1000}
+                        infiniteLoop={true}
+                        autoPlay={true}
+                        className="Car"
+                      >
+                        {i.productImg?.map((img, index) => (
+                          <img
+                            src={img.url}
+                            alt=""
+                            key={index}
+                            className="carouselImages"
+                          />
+                        ))}
+                      </Carousel>
+                    </td>
 
+                    <td> {i.productName} </td>
+                    <td> {i.descrption} </td>
+                    <td>₹{i.price} </td>
+                    <td> {i.stock} </td>
+                    <td>
+                      {i.features?.map((item, index) => (
+                        <span key={index}> {item}, </span>
+                      ))}
+                    </td>
+                    <td>{i.category_id?.category}</td>
+                    <td> {i.subCategory?.title} </td>
+                    <td>
+                      <Carousel
+                        showStatus={false}
+                        showThumbs={false}
+                        showIndicators={false}
+                        dynamicHeight={false}
+                        stopOnHover={true}
+                        swipeable={true}
+                        emulateTouch={true}
+                        interval={1000}
+                        infiniteLoop={true}
+                        autoPlay={true}
+                        className="Car"
+                      >
+                        {i.colors?.map((img, index) => (
+                          <div key={index}>
+                            <img
+                              src={img.colorImage}
+                              alt="img"
+                              className="ColorImage"
+                            />
+                            <p> {img.color} </p>
+                          </div>
+                        ))}
+                      </Carousel>
+                    </td>
+                    <td>
+                      <Carousel
+                        showStatus={false}
+                        showThumbs={false}
+                        showIndicators={false}
+                        dynamicHeight={false}
+                        stopOnHover={true}
+                        swipeable={true}
+                        emulateTouch={true}
+                        interval={2000}
+                        infiniteLoop={true}
+                        autoPlay={true}
+                        className="Car"
+                      >
+                        {i.size_of_product?.map((img, index) => (
+                          <div key={index}>
+                            <img
+                              src={img.sizeImage}
+                              alt="img"
+                              className="ColorImage"
+                            />
+                            <p> {img.size} </p>
+                          </div>
+                        ))}
+                      </Carousel>
+                    </td>
+
+                    <td>
+                      <div className="d-flex gap-2">
+                        <i
+                          className="fa-solid fa-trash"
+                          style={{ color: "red", cursor: "pointer" }}
+                          onClick={() => deleteHandler(i._id)}
+                        ></i>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        )}
       </section>
     </>
   );

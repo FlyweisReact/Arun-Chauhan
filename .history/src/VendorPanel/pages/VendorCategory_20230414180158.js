@@ -13,7 +13,7 @@ const VendorCategory = () => {
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category/seller/${sellorId}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category/seller/${sellorId}`
       );
       setData(data.data);
     } catch (e) {
@@ -39,7 +39,7 @@ const VendorCategory = () => {
 
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category",
           fd
         );
         console.log(data);
@@ -92,7 +92,7 @@ const VendorCategory = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category/${id}`
       );
       console.log(data);
       toast.success("Category Deleted");
@@ -113,7 +113,7 @@ const VendorCategory = () => {
       <section>
         <div className="pb-4 sticky top-0  w-full flex justify-between items-center bg-white">
           <span className="tracking-widest text-slate-900 font-semibold uppercase ">
-            All Categories ( Total : {data === null ? '0' : data?.length})
+            All Categories ( Total : {data === null ? "0" : data?.length})
           </span>
           <Button
             variant="outline-success"
@@ -125,44 +125,44 @@ const VendorCategory = () => {
           </Button>
         </div>
 
-        {data?.length=== 0 ? 
-        <Alert variant="info" >No Category Listed Yet</Alert>
-         :     <div style={{ maxWidth: "100%", overflow: "auto" }}>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th> SN0. </th>
-                <th> Image</th>
-                <th> Title</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map((i, index) => (
-                <tr key={index}>
-                  <td> {index + 1} </td>
-                  <td>
-                    <img
-                      src={i.categoryImg?.url}
-                      alt={i.category}
-                      style={{ width: "100px" }}
-                    />
-                  </td>
-                  <td> {i.category} </td>
-                  <td>
-                    <i
-                      className="fa-solid fa-trash"
-                      style={{ color: "red", cursor: "pointer" }}
-                      onClick={() => deleteHandler(i._id)}
-                    ></i>
-                  </td>
+        {data?.length === 0 ? (
+          <Alert variant="info">No Category Listed Yet</Alert>
+        ) : (
+          <div style={{ maxWidth: "100%", overflow: "auto" }}>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th> SN0. </th>
+                  <th> Image</th>
+                  <th> Title</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>}
-
-   
+              </thead>
+              <tbody>
+                {data?.map((i, index) => (
+                  <tr key={index}>
+                    <td> {index + 1} </td>
+                    <td>
+                      <img
+                        src={i.categoryImg?.url}
+                        alt={i.category}
+                        style={{ width: "100px" }}
+                      />
+                    </td>
+                    <td> {i.category} </td>
+                    <td>
+                      <i
+                        className="fa-solid fa-trash"
+                        style={{ color: "red", cursor: "pointer" }}
+                        onClick={() => deleteHandler(i._id)}
+                      ></i>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        )}
       </section>
     </>
   );

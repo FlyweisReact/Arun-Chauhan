@@ -12,7 +12,7 @@ const Notification = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/notify"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/notify"
       );
       setData(data.message);
     } catch (e) {
@@ -53,7 +53,7 @@ const Notification = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/notify",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/notify",
           { image: url, title, message }
         );
         toast.success(`${data.message.title} Added`);
@@ -104,10 +104,10 @@ const Notification = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-            <Form.Select id="disabledSelect">
-            <option>Disabled select</option>
-            <option>Disabled select</option>
-          </Form.Select>
+              <Form.Select id="disabledSelect">
+                <option>Disabled select</option>
+                <option>Disabled select</option>
+              </Form.Select>
             </Form.Group>
 
             <Button variant="outline-success" type="submit">
@@ -123,7 +123,7 @@ const Notification = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/notify/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/notify/${id}`
       );
       console.log(data);
       toast.success("Deleted");

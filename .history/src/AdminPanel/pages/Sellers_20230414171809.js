@@ -17,7 +17,7 @@ const Sellers = () => {
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/seller",
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/seller",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -47,7 +47,7 @@ const Sellers = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/seller",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/seller",
           { name, email, password, count, product_price },
           {
             headers: {
@@ -129,7 +129,7 @@ const Sellers = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/seller/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/seller/${id}`
       );
       console.log(data);
       fetchData();

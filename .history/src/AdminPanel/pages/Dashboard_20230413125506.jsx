@@ -18,7 +18,7 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/user"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/user"
       );
       setPassengerCount(data.data.length);
     } catch (e) {
@@ -29,7 +29,7 @@ const Dashboard = () => {
   const fetchData2 = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product"
       );
       setBusCount(data.data.length);
     } catch (e) {
@@ -40,7 +40,7 @@ const Dashboard = () => {
   const fetchData3 = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category"
       );
       setBookCount(data.data.length);
     } catch (e) {
@@ -51,7 +51,7 @@ const Dashboard = () => {
   const fetchData4 = async () => {
     try {
       const { data } = await axios.post(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/mostProduct"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/mostProduct"
       );
       setCount(data[0]?.productName);
     } catch (e) {
@@ -62,7 +62,7 @@ const Dashboard = () => {
   const fetchData5 = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/user/active"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/user/active"
       );
       setCount1(data.data.length);
     } catch (e) {

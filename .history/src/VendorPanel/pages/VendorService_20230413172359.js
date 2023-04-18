@@ -17,7 +17,7 @@ const VendorService = () => {
   const fetchHandler = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service/seller/${sellorId}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/service/seller/${sellorId}`
       );
       setData(data.data);
     } catch (e) {
@@ -28,7 +28,7 @@ const VendorService = () => {
   const fetchSub = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
       );
       setSubCat(data.result);
     } catch (e) {
@@ -39,7 +39,7 @@ const VendorService = () => {
   const fetchCat = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category"
       );
       setCatData(data.data);
     } catch (e) {
@@ -92,7 +92,7 @@ const VendorService = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/service",
           {
             serviceName: title,
             serviceImg: url,
@@ -231,7 +231,7 @@ const VendorService = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/service/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/service/${id}`
       );
       toast.success(data.message);
       fetchHandler();

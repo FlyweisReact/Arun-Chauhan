@@ -14,7 +14,7 @@ const About = () => {
   const fetchHandler = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/about"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/about"
       );
       setData(data.message);
       setDataCount(data.message.length);
@@ -37,7 +37,7 @@ const About = () => {
 
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/about",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/about",
           { title, desc }
         );
 
@@ -90,7 +90,7 @@ const About = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/about/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/about/${id}`
       );
       console.log(data);
       toast.success("Deleted");

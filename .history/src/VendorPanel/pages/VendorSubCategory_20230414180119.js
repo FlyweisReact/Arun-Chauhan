@@ -15,7 +15,7 @@ const VendorSubCategory = () => {
   const fetchHandler = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subCategory/seller/${sellorId}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subCategory/seller/${sellorId}`
       );
       setData(data.result);
     } catch (e) {
@@ -26,7 +26,7 @@ const VendorSubCategory = () => {
   const fetchCategoryHandler = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category/seller/${sellorId}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category/seller/${sellorId}`
       );
       setCatData(data.data);
     } catch (e) {
@@ -70,7 +70,7 @@ const VendorSubCategory = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/",
           {
             image: url,
             title,
@@ -147,7 +147,7 @@ const VendorSubCategory = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/${id}`
       );
       toast.success(data.message);
       fetchHandler();
@@ -179,42 +179,42 @@ const VendorSubCategory = () => {
           </Button>
         </div>
 
-        {data.length === 0 ? <Alert variant="info">No Sub-Categories Listed Yet </Alert> :
-        <div style={{ maxWidth: "100%", overflow: "auto" }}>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Sno.</th>
-                <th> Image</th>
-                <th> Title</th>
-                <th> Category</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map((i, index) => (
-                <tr key={index}>
-                  <td> {index + 1} </td>
-                  <td>
-                    <img src={i.image} alt="" style={{ width: "100px" }} />
-                  </td>
-                  <td>{i.title} </td>
-                  <td> {i.catgory?.category} </td>
-                  <td>
-                    <i
-                      className="fa-solid fa-trash"
-                      style={{ color: "#ff0000", cursor: "pointer" }}
-                      onClick={() => deleteHandler(i._id)}
-                    ></i>
-                  </td>
+        {data.length === 0 ? (
+          <Alert variant="info">No Sub-Categories Listed Yet </Alert>
+        ) : (
+          <div style={{ maxWidth: "100%", overflow: "auto" }}>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Sno.</th>
+                  <th> Image</th>
+                  <th> Title</th>
+                  <th> Category</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
-        }
-
-    
+              </thead>
+              <tbody>
+                {data?.map((i, index) => (
+                  <tr key={index}>
+                    <td> {index + 1} </td>
+                    <td>
+                      <img src={i.image} alt="" style={{ width: "100px" }} />
+                    </td>
+                    <td>{i.title} </td>
+                    <td> {i.catgory?.category} </td>
+                    <td>
+                      <i
+                        className="fa-solid fa-trash"
+                        style={{ color: "#ff0000", cursor: "pointer" }}
+                        onClick={() => deleteHandler(i._id)}
+                      ></i>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        )}
       </section>
     </>
   );

@@ -14,7 +14,7 @@ const TermsCon = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/terms"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/terms"
       );
       setData(data.data);
       setDataCount(data.data.length);
@@ -35,7 +35,7 @@ const TermsCon = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/terms",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/terms",
           { terms }
         );
         console.log(data);
@@ -81,7 +81,7 @@ const TermsCon = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/terms/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/terms/${id}`
       );
       console.log(data);
       toast.success("Deleted");

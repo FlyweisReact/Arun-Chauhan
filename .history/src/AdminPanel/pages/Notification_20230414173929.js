@@ -12,7 +12,7 @@ const Notification = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/notify"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/notify"
       );
       setData(data.message);
     } catch (e) {
@@ -29,7 +29,7 @@ const Notification = () => {
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
     const [url, setUrl] = useState("");
-    const [ vehicle , setVehicle ] = useState("")
+    const [vehicle, setVehicle] = useState("");
 
     const UploadImage = (e) => {
       const data = new FormData();
@@ -54,8 +54,8 @@ const Notification = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/notify",
-          { image: url, title, message , vehicle }
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/notify",
+          { image: url, title, message, vehicle }
         );
         toast.success(`${data.message.title} Added`);
         fetchData();
@@ -105,7 +105,10 @@ const Notification = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Select aria-label="Default select example" onChange={(e) => setVehicle()} >
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => setVehicle()}
+              >
                 <option>-- Select Vehicle --</option>
                 <option value="1">Two Wheeler</option>
                 <option value="2">Four Wheeler</option>
@@ -125,7 +128,7 @@ const Notification = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/notify/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/notify/${id}`
       );
       console.log(data);
       toast.success("Deleted");

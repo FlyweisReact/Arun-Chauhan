@@ -16,7 +16,7 @@ const Users = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/user"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/user"
       );
       setData(data.data);
       setDataCount(data.data.length);
@@ -32,7 +32,7 @@ const Users = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/user/delete/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/user/delete/${id}`
       );
       console.log(data);
       toast.success("User Deleted");

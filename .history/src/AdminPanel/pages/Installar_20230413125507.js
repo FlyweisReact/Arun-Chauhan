@@ -15,7 +15,7 @@ const Installar = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/installer/all"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/installer/all"
       );
       setData(data.result);
     } catch (e) {
@@ -30,7 +30,7 @@ const Installar = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/installer/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/installer/${id}`
       );
       console.log(data);
       toast.success("Deleted");

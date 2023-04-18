@@ -22,7 +22,7 @@ const Login = () => {
     setLoading(true);
     try {
       const { data } = await axios.post(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/admin/signin",
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/admin/signin",
         {
           email,
           password,

@@ -15,7 +15,7 @@ const VendorSubCategory = () => {
   const fetchHandler = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subCategory/seller/${sellorId}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subCategory/seller/${sellorId}`
       );
       setData(data.result);
     } catch (e) {
@@ -26,7 +26,7 @@ const VendorSubCategory = () => {
   const fetchCategoryHandler = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category/seller/${sellorId}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category/seller/${sellorId}`
       );
       setCatData(data.data);
     } catch (e) {
@@ -70,7 +70,7 @@ const VendorSubCategory = () => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/",
           {
             image: url,
             title,
@@ -147,7 +147,7 @@ const VendorSubCategory = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/${id}`
       );
       toast.success(data.message);
       fetchHandler();
@@ -179,7 +179,11 @@ const VendorSubCategory = () => {
           </Button>
         </div>
 
-        {data.message === '"No SubCagegory found this SellerId "' ? <Alert variant="info">No </Alert> :""}
+        {data.message === '"No SubCagegory found this SellerId "' ? (
+          <Alert variant="info">No </Alert>
+        ) : (
+          ""
+        )}
 
         <div style={{ maxWidth: "100%", overflow: "auto" }}>
           <Table striped bordered hover>

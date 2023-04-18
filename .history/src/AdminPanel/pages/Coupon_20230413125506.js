@@ -13,7 +13,7 @@ const Coupon = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/coupon/"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/coupon/"
       );
       setData(data);
       setDataCount(data.length);
@@ -44,7 +44,7 @@ const Coupon = () => {
     const fetchP = async () => {
       try {
         const { data } = await axios.get(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product"
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product"
         );
         setProductData(data?.data);
       } catch (e) {
@@ -54,7 +54,7 @@ const Coupon = () => {
     const fetchS = async () => {
       try {
         const { data } = await axios.get(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category"
         );
         setCategoryData(data?.data);
       } catch (e) {
@@ -64,7 +64,7 @@ const Coupon = () => {
     const fetchC = useCallback(async () => {
       try {
         const { data } = await axios.get(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/seller",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/seller",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -90,7 +90,7 @@ const Coupon = () => {
       try {
         if (expirationDate > activationDate) {
           const { data } = await axios.post(
-            "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/coupon",
+            "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/coupon",
             {
               code,
               expirationDate,
@@ -225,7 +225,7 @@ const Coupon = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/coupon/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/coupon/${id}`
       );
       toast.success(data.message);
       fetchData();

@@ -17,7 +17,7 @@ const Sellers = () => {
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/seller",
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/seller",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -40,15 +40,15 @@ const Sellers = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [ count , setCount] = useState("")
-    const [product_price , setProductPrice ] = useState("")
+    const [count, setCount] = useState("");
+    const [product_price, setProductPrice] = useState("");
 
     const postHandler = async (e) => {
       e.preventDefault();
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/seller",
-          { name, email, password , count , product_price},
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/seller",
+          { name, email, password, count, product_price },
           {
             headers: {
               Authorization: `Bearer ${token} `,
@@ -102,13 +102,16 @@ const Sellers = () => {
 
             <Form.Group className="mb-3">
               <Form.Label>Free Product Count</Form.Label>
-              <Form.Control type='number' min={0} 
-                onChange={(e) => setPassword(e.target.value)} />
+              <Form.Control
+                type="number"
+                min={0}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Per Product Price</Form.Label>
-              <Form.Control type='number' min={0} />
+              <Form.Control type="number" min={0} />
             </Form.Group>
 
             <Button type="submit">Submit</Button>
@@ -122,7 +125,7 @@ const Sellers = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/seller/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/seller/${id}`
       );
       console.log(data);
       fetchData();

@@ -23,7 +23,7 @@ const Product = () => {
   const fetchData = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product"
       );
       setData(data.data);
       setDataCount(data.data.length);
@@ -35,7 +35,7 @@ const Product = () => {
   const fetchCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/category"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/category"
       );
       setCatedogryData(data.data);
     } catch (e) {
@@ -46,7 +46,7 @@ const Product = () => {
   const fetchSubCategory = async () => {
     try {
       const { data } = await axios.get(
-        "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
+        "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/subcategory/"
       );
       setSubCategoryData(data.result);
     } catch (e) {
@@ -77,7 +77,7 @@ const Product = () => {
     const [color, setColor] = useState("");
     const [size, setSize] = useState("");
     const [sizeImage, setSizeImage] = useState("");
-    const [colorImage,setColorImage   ] = useState("");
+    const [colorImage, setColorImage] = useState("");
 
     const postDetails = (e) => {
       const data = new FormData();
@@ -116,7 +116,6 @@ const Product = () => {
           console.log(err);
         });
     };
-
 
     const commissionFull = commisionSir + commision;
 
@@ -136,7 +135,7 @@ const Product = () => {
 
       try {
         const { data } = await axios.post(
-          "http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product",
+          "http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product",
           fd
         );
         console.log(data);
@@ -156,7 +155,7 @@ const Product = () => {
 
       try {
         const { data } = await axios.put(
-          `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`,
+          `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`,
           fd
         );
         console.log(data);
@@ -310,7 +309,7 @@ const Product = () => {
   const deleteHandler = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/${id}`
       );
       console.log(data);
       toast.success("Product Deleted");
@@ -323,7 +322,7 @@ const Product = () => {
   const statusHandler = async (id) => {
     try {
       const { data } = await axios.post(
-        `http://ec2-15-206-210-177.ap-south-1.compute.amazonaws.com:1112/api/product/status/${id}`
+        `http://ec2-65-1-248-95.ap-south-1.compute.amazonaws.com:1112/api/product/status/${id}`
       );
       console.log(data);
       alert("Status Changed");
