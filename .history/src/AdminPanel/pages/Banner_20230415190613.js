@@ -25,7 +25,7 @@ const Banner = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);n
+  }, []);
 
   function MyVerticallyCenteredModal(props) {
     const [image, setImage] = useState("");

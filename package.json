@@ -21,6 +21,7 @@
     "react-draft-wysiwyg": "^1.15.0",
     "react-icons": "^4.4.0",
     "react-loader-spinner": "^5.1.5",
+    "react-notifications-component": "^4.0.1",
     "react-owl-carousel": "^2.3.3",
     "react-quill": "^2.0.0",
     "react-responsive-carousel": "^3.2.23",
