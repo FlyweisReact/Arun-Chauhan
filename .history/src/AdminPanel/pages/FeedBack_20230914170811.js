@@ -56,7 +56,7 @@ const FeedBack = () => {
             <tr key={index}>
               <td> {index + 1} </td>
               <td>
-                {/* {i.reting === 0 ? (
+                {i.reting === 0 ? (
                   <>
                     <i
                       class="fa-regular fa-star"
@@ -252,7 +252,7 @@ const FeedBack = () => {
                   </>
                 ) : (
                   ""
-                )} */}
+                )}
                 {i.reting}
               </td>
               <td>
